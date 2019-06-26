@@ -9,7 +9,7 @@ import game.backend.element.Wall;
 public class Level1 extends Grid {
 	
 	private static int REQUIRED_SCORE = 5000; 
-	private static int MAX_MOVES = 20; 
+	private static int MAX_MOVES = 20;
 	
 	private Cell wallCell;
 	private Cell candyGenCell;
