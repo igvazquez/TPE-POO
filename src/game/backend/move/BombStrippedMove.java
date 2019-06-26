@@ -15,6 +15,7 @@ public class BombStrippedMove extends Move {
 	
 	@Override
 	public void removeElements() {
+		//cambia todos lo caramelos de ese color, por caramelos con lineas del mismo color
 		Candy candy = (Candy) (get(i1, j1) instanceof Bomb ? get(i2, j2) : get(i1, j1));
 		CandyColor color = candy.getColor();
 		for(int i = 0; i < Grid.SIZE; i++) {
@@ -24,7 +25,9 @@ public class BombStrippedMove extends Move {
 				}
 			}
 		}
+		//avisa a los listeners
 		wasUpdated();
+		//duke caboom
 		for(int i = 0; i < Grid.SIZE; i++) {
 			for(int j = 0; j < Grid.SIZE; j++) {
 				if (candy.equals(get(i, j))) {

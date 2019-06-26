@@ -23,6 +23,7 @@ public class Cell {
 		this.around[Direction.RIGHT.ordinal()] = right;
 	}
 
+	//Termine de caer
 	public boolean hasFloor() {
 		return !around[Direction.DOWN.ordinal()].isEmpty();
 	}
@@ -39,6 +40,7 @@ public class Cell {
 		return content;
 	}
 	
+	//Deja Nothing como contenido y realiza la explosion si es que tiene
 	public void clearContent() {
 		if (content.isMovable()) {
 			Direction[] explosionCascade = content.explode();
@@ -50,13 +52,15 @@ public class Cell {
 			this.content = new Nothing();
 		}
 	}
-	
+
+	//Realiza la explosion en las direcciones indicadas
 	private void expandExplosion(Direction[] explosion) {
 		for(Direction d: explosion) {
 			this.around[d.ordinal()].explode(d);
 		}
 	}
-	
+
+	//Recibe una direccion y conduce la explosion en esa direccion
 	private void explode(Direction d) {
 		clearContent();
 		if (this.around[d.ordinal()] != null)

@@ -106,7 +106,9 @@ public abstract class Grid {
 		}
 		return null;
 	}
-	
+
+
+	//Igual que en figure detector
 	private void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
 		if (f.hasReplacement()) {
@@ -142,7 +144,8 @@ public abstract class Grid {
 			}
 		}
 	}
-	
+
+	//Notifica a los listeners que hubo una explosion para que hagan lo necesario
 	public void cellExplosion(Element e) {
 		for (GameListener gl: listeners) {
 			gl.cellExplosion(e);

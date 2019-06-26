@@ -5,7 +5,8 @@ import game.backend.move.Direction;
 public class WrappedCandy extends Candy {
 	
 	private Direction[] explosion = new Direction[4];
-	
+
+	//No explota como deberia explotar, es como un Striped Candy doble
 	public WrappedCandy() {
 		explosion[0] = Direction.LEFT;
 		explosion[1] = Direction.RIGHT;

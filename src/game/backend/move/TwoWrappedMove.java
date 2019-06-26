@@ -7,7 +7,9 @@ public class TwoWrappedMove extends Move {
 	public TwoWrappedMove(Grid grid) {
 		super(grid);
 	}
-	
+
+	//No cambia de sentido de explosion en base a la posicion de los caramelos
+	//Se borran los caramelos???
 	@Override
 	public void removeElements() {
 		int currI, currJ;
@@ -19,8 +21,10 @@ public class TwoWrappedMove extends Move {
 				currI = i2;
 				currJ = j2;
 			}
+
 			clearContent(currI,currJ-1);
 			clearContent(currI, currJ + 2);
+
 			for(int n = -1; n < 3; n++) {
 				clearContent(currI - 1, currJ + n);
 				clearContent(currI + 1, currJ + n);
@@ -33,6 +37,7 @@ public class TwoWrappedMove extends Move {
 				currI = i2;
 				currJ = j2;
 			}
+
 			clearContent(currI,currJ-1);
 			clearContent(currI,currJ+2);
 			for(int n = -1; n < 3; n++) {

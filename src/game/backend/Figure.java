@@ -11,13 +11,17 @@ import game.backend.element.WrappedCandy;
 import java.awt.Point;
 
 public enum Figure {
-	
+	//Tipos de combinaciones posibles
+
+	//Forman Bomba
 	F6(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(0,1), new Point(0,2)}, 240, Bomb.class, false),
 	F15(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(1,0), new Point(2,0)}, 15, Bomb.class, false),	
+	//Forman caramelos con lineas
 	F4(new Point[]{ new Point(0,-1), new Point(0,1), new Point(0,2)}, 112,  VerticalStripedCandy.class),
 	F5(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(0,1)}, 208, VerticalStripedCandy.class),
 	F13(new Point[]{ new Point(-1,0), new Point(1,0), new Point(2,0)}, 13,  HorizontalStripedCandy.class),	
 	F14(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(1,0)}, 7, HorizontalStripedCandy.class),
+	//Forman caramelos envueltos
 	F7(new Point[]{ new Point(0,1), new Point(0,2), new Point(1,0), new Point(2,0)}, 60, WrappedCandy.class),
 	F8(new Point[]{ new Point(0,-1), new Point(0,1), new Point(1,0), new Point(2,0)}, 92, WrappedCandy.class),
 	F9(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(1,0), new Point(2,0)}, 204, WrappedCandy.class),
@@ -26,6 +30,7 @@ public enum Figure {
 	F18(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(0,-1), new Point(0,-2)}, 195, WrappedCandy.class),
 	F19(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(0,-1), new Point(0,1)}, 83, WrappedCandy.class),
 	F20(new Point[]{ new Point(-1,0), new Point(1,0), new Point(0,-2), new Point(0,-1)}, 197, WrappedCandy.class),
+	//No se forma nada
 	F1(new Point[]{new Point(0,1), new Point(0,2)}, 48),
 	F2(new Point[]{new Point(0,-1), new Point(0,1)}, 80),
 	F3(new Point[]{new Point(0,-1), new Point(0,-2)}, 192),

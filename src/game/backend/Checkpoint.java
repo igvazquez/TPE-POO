@@ -2,6 +2,7 @@ package game.backend;
 
 public enum Checkpoint {
 
+
 	U(-1,0, 1),
 	UU(-2,0, 2),
 	D(1,0, 4),

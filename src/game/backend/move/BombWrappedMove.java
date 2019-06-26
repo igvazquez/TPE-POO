@@ -12,6 +12,7 @@ public class BombWrappedMove extends Move {
 	
 	@Override
 	public void removeElements() {
+		//Rompe todos los de ese color
 		Candy candy = (Candy) (get(i1, j1) instanceof Bomb ? get(i2, j2) : get(i1, j1));
 		clearContent(i1, j1);
 		clearContent(i2, j2);
@@ -22,6 +23,7 @@ public class BombWrappedMove extends Move {
 				}
 			}
 		}
+		//rompe al rededor de cada una
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
 				if (i1 + i >= 0 && i1 + i < Grid.SIZE && j1 + j >= 0 && j1 + j < Grid.SIZE) {

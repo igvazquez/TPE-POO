@@ -45,7 +45,7 @@ public class Candy extends Element {
 	public String getFullKey() {
 		return color.toString() + "-CANDY";
 	}
-	
+	//feo, deberia ser de clase
 	@Override
 	public String getKey() {
 		return "CANDY";

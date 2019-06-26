@@ -22,6 +22,8 @@ public class MoveMaker {
 
 	private void initMap(){
 		map = new HashMap<>();
+
+		//Deberian ser metodos de clase, no de instancia?
 		map.put(new Candy().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new Candy().getKey() + new HorizontalStripedCandy().getKey(), new CandyMove(grid));
 		map.put(new Candy().getKey() + new VerticalStripedCandy().getKey(), new CandyMove(grid));
