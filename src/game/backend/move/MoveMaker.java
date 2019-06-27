@@ -12,15 +12,15 @@ import java.util.Map;
 
 public class MoveMaker {
 
-	private Map<String, Move> map;
-	private Grid grid;
+	protected Map<String, Move> map;
+	protected Grid grid;
 	
 	public MoveMaker(Grid grid) {
 		this.grid = grid;
 		initMap();
 	}
 
-	private void initMap(){
+	protected void initMap(){
 		map = new HashMap<>();
 
 		//Deberian ser metodos de clase, no de instancia?
