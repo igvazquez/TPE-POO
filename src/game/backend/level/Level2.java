@@ -5,9 +5,13 @@ import game.backend.cell.Cell;
 
 public class Level2 extends Level1 {
 
+    public static final int REQUIRED_UNCOMBINABLES = 5;
+    public static final int UNCOMBINABLE_FRECUENCY = 5;
+    public static final int MAX_MOVES = 70;
+
     @Override
     protected GameState newState() {
-        return new Level1State(REQUIRED_SCORE, MAX_MOVES);
+        return new Level5State(REQUIRED_SCORE, MAX_MOVES);
     }
 
     private boolean levelRemoveCellCriteria(int i, int j){
@@ -30,7 +34,21 @@ public class Level2 extends Level1 {
             super.clearContent(i, j);
     }
 
-    private class Level5State
+    private class Level5State extends GameState{
+
+        public Level5State() {
+        }
+
+        @Override
+        public boolean gameOver() {
+            return false;
+        }
+
+        @Override
+        public boolean playerWon() {
+            return false;
+        }
+    }
 
 
 
