@@ -2,15 +2,14 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.Grid;
-import game.backend.cell.Cell;
 import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Element;
 import game.backend.element.UncombinableElement;
 import game.backend.element.UncombinableElementType;
 
-public class Level5 extends Level1 {
-
+public class Level5 extends Grid {
     public static final int REQUIRED_UNCOMBINABLES = 5;
+
     public static final int UNCOMBINABLE_FRECUENCY = 5;
     public static final int MAX_MOVES = 70;
 
@@ -39,8 +38,20 @@ public class Level5 extends Level1 {
         boolean ret;
         if (ret = super.tryMove(i1, j1, i2, j2)) {
             state().addMove();
+            uncombinableRemoval();
         }
         return ret;
+    }
+
+    @Override
+    public Element getSpecialLevelElement() {
+        int i = (int)(Math.random() * UncombinableElementType.values().length);
+        return new UncombinableElement(UncombinableElementType.values()[i]);
+    }
+
+    @Override
+    protected void setCandyCellGenerator() {
+        candyGenCell = new SpecialCandyGeneratorCell(this, UNCOMBINABLE_FRECUENCY, REQUIRED_UNCOMBINABLES);
     }
 
     @Override
@@ -48,8 +59,8 @@ public class Level5 extends Level1 {
         if(levelRemoveCellCriteria(i, j))
             super.clearContent(i, j);
     }
-
     private class Level5State extends GameState{
+
 
         private int uncombinablesLeft;
 
@@ -66,20 +77,9 @@ public class Level5 extends Level1 {
         public boolean playerWon() {
             return uncombinablesLeft <= 0;
         }
-
         public void addRemovedUncombinable(){
             uncombinablesLeft--;
         }
-    }
 
-    @Override
-    public Element getSpecialLevelElement() {
-        int i = (int)(Math.random() * UncombinableElementType.values().length);
-        return new UncombinableElement(UncombinableElementType.values()[i]);
-    }
-
-    @Override
-    protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, UNCOMBINABLE_FRECUENCY, REQUIRED_UNCOMBINABLES);
     }
 }
