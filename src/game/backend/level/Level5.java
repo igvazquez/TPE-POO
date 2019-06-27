@@ -17,7 +17,7 @@ public class Level5 extends Level1 {
 
     @Override
     protected GameState newState() {
-        return new Level5State(REQUIRED_SCORE, MAX_MOVES);
+        return new Level5State(REQUIRED_UNCOMBINABLES);
     }
 
     private boolean levelRemoveCellCriteria(int i, int j){
@@ -28,10 +28,19 @@ public class Level5 extends Level1 {
         for(int i = 0; i < SIZE; i++){
             if(g()[SIZE-1][i].getContent().isUncombinable()){
                 clearContent(SIZE-1, i);
-                state().addRemovedUncombinable()
+                ((Level5State)state()).addRemovedUncombinable();
             }
         }
         fallElements();
+    }
+
+    @Override
+    public boolean tryMove(int i1, int j1, int i2, int j2) {
+        boolean ret;
+        if (ret = super.tryMove(i1, j1, i2, j2)) {
+            state().addMove();
+        }
+        return ret;
     }
 
     @Override
