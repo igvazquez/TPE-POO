@@ -49,6 +49,8 @@ public class ImageManager {
 			hc.setColor(cc);
 			images.put(hc.getFullKey(),  new Image(IMAGE_PATH + cc.toString().toLowerCase() + "HStripped.png"));
 		}
+
+
 	}
 
 	public Image getImage(Element e) {
