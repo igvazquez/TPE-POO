@@ -1,14 +1,6 @@
 package game.frontend;
 
-import game.backend.element.Bomb;
-import game.backend.element.Candy;
-import game.backend.element.CandyColor;
-import game.backend.element.Element;
-import game.backend.element.HorizontalStripedCandy;
-import game.backend.element.Nothing;
-import game.backend.element.VerticalStripedCandy;
-import game.backend.element.Wall;
-import game.backend.element.WrappedCandy;
+import game.backend.element.*;
 import javafx.scene.image.Image;
 
 import java.util.HashMap;
@@ -30,6 +22,8 @@ public class ImageManager {
 		images.put(new Nothing().getKey(), new Image(IMAGE_PATH + "nothing.png"));
 		images.put(new Bomb().getKey(),  new Image(IMAGE_PATH + "bomb.png"));
 		images.put(new Wall().getKey(),  new Image(IMAGE_PATH + "wall.png"));
+		images.put(new UncombinableElement(UncombinableElementType.CHERRY).getFullKey(), new Image(IMAGE_PATH + "cherry.png"));
+		images.put(new UncombinableElement(UncombinableElementType.HAZELNUT).getFullKey(), new Image(IMAGE_PATH + "hazlenut.png"));
 
 		//Agrega todos los colores para caramelos comunes
 		for (CandyColor cc: CandyColor.values()) {
