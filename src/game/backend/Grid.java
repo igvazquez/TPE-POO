@@ -1,17 +1,17 @@
 package game.backend;
 
+import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
+import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Element;
+import game.backend.element.Wall;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Grid {
 	
@@ -21,11 +21,13 @@ public abstract class Grid {
 	private Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
-	private MoveMaker moveMaker;
-	private FigureDetector figureDetector;
+	protected MoveMaker moveMaker;
+	protected FigureDetector figureDetector;
+
+	private Cell wallCell;
+	protected Cell candyGenCell;
 	
 	protected abstract GameState newState();
-	protected abstract void fillCells();
 	
 	protected Cell[][] g() {
 		return g;
@@ -36,8 +38,9 @@ public abstract class Grid {
 	}
 	
 	public void initialize() {
-		moveMaker = new MoveMaker(this);
-		figureDetector = new FigureDetector(this);
+		setMoveMaker();
+		setFigureDetector();
+		setCandyCellGenerator();
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
 				g[i][j] = new Cell(this);
@@ -46,7 +49,19 @@ public abstract class Grid {
 		}
 		fillCells();
 		fallElements();
-	}	
+	}
+
+	protected void setCandyCellGenerator() {
+		candyGenCell = new CandyGeneratorCell(this);
+	}
+
+	protected void setFigureDetector() {
+		figureDetector = new FigureDetector(this);
+	}
+
+	protected void setMoveMaker() {
+		moveMaker = new MoveMaker(this);
+	}
 
 	public Element get(int i, int j) {
 		return g[i][j].getContent();
@@ -153,4 +168,48 @@ public abstract class Grid {
 		}
 	}
 
+	public Element getSpecialLevelElement() {
+		throw new NoSuchElementException();
+	}
+
+	protected void fillCells() {
+
+		wallCell = new Cell(this);
+		wallCell.setContent(new Wall());
+
+
+		//corners
+		//Agrega walls a  los costados y generadores arriba
+		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
+		g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
+		//genera parades abajo y a los costados
+		g()[SIZE-1][0].setAround(g()[SIZE-2][0], wallCell, wallCell, g()[SIZE-1][1]);
+		g()[SIZE-1][SIZE-1].setAround(g()[SIZE-2][SIZE-1], wallCell, g()[SIZE-1][SIZE-2], wallCell);
+
+		//Agrega arriba los generadores y en los bordes las paredes
+		//Asocia todas las celdas adyacentes entre si
+		//Y quedan todas las celdas vacias
+		//upper line cellsK
+		for (int j = 1; j < SIZE-1; j++) {
+			g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
+		}
+		//bottom line cells
+		for (int j = 1; j < SIZE-1; j++) {
+			g()[SIZE-1][j].setAround(g()[SIZE-2][j], wallCell, g()[SIZE-1][j-1],g()[SIZE-1][j+1]);
+		}
+		//left line cells
+		for (int i = 1; i < SIZE-1; i++) {
+			g()[i][0].setAround(g()[i-1][0],g()[i+1][0], wallCell ,g()[i][1]);
+		}
+		//right line cells
+		for (int i = 1; i < SIZE-1; i++) {
+			g()[i][SIZE-1].setAround(g()[i-1][SIZE-1],g()[i+1][SIZE-1], g()[i][SIZE-2], wallCell);
+		}
+		//central cells
+		for (int i = 1; i < SIZE-1; i++) {
+			for (int j = 1; j < SIZE-1; j++) {
+				g()[i][j].setAround(g()[i-1][j],g()[i+1][j],g()[i][j-1],g()[i][j+1]);
+			}
+		}
+	}
 }
