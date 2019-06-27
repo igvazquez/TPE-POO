@@ -6,6 +6,7 @@ import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Element;
 import game.backend.element.UncombinableElement;
 import game.backend.element.UncombinableElementType;
+import game.backend.move.MoveMakerWithUncombinable;
 
 public class Level5 extends Grid {
     public static final int REQUIRED_UNCOMBINABLES = 5;
@@ -21,6 +22,11 @@ public class Level5 extends Grid {
 
     private boolean levelRemoveCellCriteria(int i, int j){
         return !g()[i][j].getContent().isUncombinable() || i == SIZE-1;
+    }
+
+    @Override
+    protected void setMoveMaker() {
+        moveMaker = new MoveMakerWithUncombinable(this);
     }
 
     private void uncombinableRemoval(){
