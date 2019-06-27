@@ -87,5 +87,20 @@ public class Level5 extends Grid {
             uncombinablesLeft--;
         }
 
+        @Override
+        public boolean hasExtraScoreInfo() {
+            return true;
+        }
+
+        @Override
+        public String getExtraScoreMessage() {
+            return "Fruits left: ";
+        }
+
+        @Override
+        public String getExtraScoreValue() {
+            return String.valueOf(uncombinablesLeft);
+        }
+
     }
 }

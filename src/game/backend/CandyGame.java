@@ -62,4 +62,15 @@ public class CandyGame implements GameListener {
 		//
 	}
 
+	public boolean hasExtraScoreInfo() {
+		return state.hasExtraScoreInfo();
+	}
+
+	public String getExtraScoreMessage() {
+		return state.getExtraScoreMessage();
+	}
+
+	public String getExtraScoreValue() {
+		return state.getExtraScoreValue();
+	}
 }
