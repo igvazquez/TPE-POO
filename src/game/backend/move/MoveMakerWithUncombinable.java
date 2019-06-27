@@ -31,5 +31,6 @@ public class MoveMakerWithUncombinable extends MoveMaker{
         map.put(specialKey + new Bomb().getKey(), new InvalidMove(grid));
         map.put(new Bomb().getKey() + specialKey, new InvalidMove(grid));
 
+        map.put(specialKey + specialKey, new InvalidMove(grid));
     }
 }
