@@ -56,6 +56,7 @@ public abstract class Grid {
 		return g[i][j];
 	}
 
+	//Hace caer elementos en los luigares vacios
 	public void fallElements() {
 		int i = SIZE - 1;
 		while (i >= 0) {

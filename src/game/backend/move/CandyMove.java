@@ -20,7 +20,7 @@ public class CandyMove extends Move {
 	@Override
 	public boolean internalValidation() {
 		this.detector = new FigureDetector(grid);
-		f1 = detector.checkFigure(i1, j1);
+		f1 = detector.checkFigure(i1, j1);	//Si viene un caramelo especial es siempre null
 		f2 = detector.checkFigure(i2, j2);
 		return f1 != null || f2 != null;
 	}	

@@ -8,6 +8,8 @@ public class BoardPanel extends TilePane {
 
 	private ImageView[][] cells;
 
+	//se crea una matriz del tamaño del juego y se llena con ImageView para que muestren
+	//los caramelos correspondientes
 	public BoardPanel(final int rows, final int columns, final int cellSize) {
 		setPrefRows(rows);
 		setPrefColumns(columns);
