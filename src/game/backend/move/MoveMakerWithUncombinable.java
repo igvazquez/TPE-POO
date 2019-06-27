@@ -28,8 +28,8 @@ public class MoveMakerWithUncombinable extends MoveMaker{
         map.put(new WrappedCandy().getKey() + specialKey, new CandyMove(grid));
         map.put(specialKey + new WrappedCandy().getKey(), new CandyMove(grid));
 
-        map.put(specialKey + new Bomb().getKey(), new CandyMove(grid));
-        map.put(new Bomb().getKey() + specialKey, new CandyMove(grid));
+        map.put(specialKey + new Bomb().getKey(), new InvalidMove(grid));
+        map.put(new Bomb().getKey() + specialKey, new InvalidMove(grid));
 
     }
 }
