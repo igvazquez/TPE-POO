@@ -8,12 +8,13 @@ import game.backend.move.Direction;
 public class Cell {
 	
 	protected Grid grid;
-	private Cell[] around = new Cell[Direction.values().length];
-	private Element content;
+	protected Cell[] around;
+	protected Element content;
 	
 	public Cell(Grid grid) {
 		this.grid = grid;
 		this.content = new Nothing();
+		around = new Cell[Direction.values().length];
 	}
 	
 	public void setAround(Cell up, Cell down, Cell left, Cell right) {
@@ -62,7 +63,7 @@ public class Cell {
 
 	//Recibe una direccion y conduce la explosion en esa direccion
 	private void explode(Direction d) {
-		clearContent();
+		clearContent();//Arreglar la explosion
 		if (this.around[d.ordinal()] != null)
 			this.around[d.ordinal()].explode(d);
 	}

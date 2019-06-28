@@ -215,4 +215,8 @@ public abstract class Grid {
 			}
 		}
 	}
+
+	public boolean cellRemovalCriteria(int i, int j){
+		return true;
+	}
 }

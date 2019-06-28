@@ -20,7 +20,8 @@ public class Level5 extends Grid {
         return new Level5State(REQUIRED_UNCOMBINABLES);
     }
 
-    private boolean levelRemoveCellCriteria(int i, int j){
+    @Override
+    public boolean cellRemovalCriteria(int i, int j){
         return !g()[i][j].getContent().isUncombinable() || i == SIZE-1;
     }
 
@@ -62,7 +63,7 @@ public class Level5 extends Grid {
 
     @Override
     public void clearContent(int i, int j) {
-        if(levelRemoveCellCriteria(i, j))
+        if(cellRemovalCriteria(i, j))
             super.clearContent(i, j);
     }
     private class Level5State extends GameState{
