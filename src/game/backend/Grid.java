@@ -9,6 +9,7 @@ import game.backend.element.Element;
 import game.backend.element.Wall;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
+import javafx.collections.transformation.SortedList;
 
 import java.awt.Point;
 import java.util.*;
