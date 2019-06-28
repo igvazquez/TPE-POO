@@ -9,19 +9,21 @@ public class WrappedStripedMove extends Move {
 	}
 	
 	@Override
-	//Franja horizontal
 	public void removeElements() {
+
+		//Franja horizontal
 		for(int i = -1; i < 2; i++) {
-			for(int j = 0; j < Grid.SIZE; j++) {
-				if (i2 + i >= 0 && i2 + i < Grid.SIZE) {
+			for (int j = 0; j < Grid.SIZE; j++) {
+				if (Grid.inBounds(i2 + i, j)) {
 					clearContent(i2 + i, j);
 				}
 			}
 		}
+
 		//Franja vertical
 		for(int j = -1; j < 2; j++) {
 			for(int i = 0; i < Grid.SIZE; i++) {
-				if (j2 + j >= 0 && j2 + j < Grid.SIZE) {
+				if (Grid.inBounds(i,j2 + j)) {
 					clearContent(i, j2 + j);
 				}
 			}

@@ -231,4 +231,8 @@ public abstract class Grid {
 	public boolean cellRemovalCriteria(int i, int j){
 		return cellRemovalCriteria(g[i][j]);
 	}
+
+	public static boolean inBounds(int i, int j){
+		return i>= 0 && i <= SIZE -1 && j>= 0 && j <= SIZE -1;
+	}
 }

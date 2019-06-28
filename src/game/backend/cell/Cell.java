@@ -83,6 +83,7 @@ public class Cell {
 		if (this.isEmpty() && !up.isEmpty() && up.isMovable()) {
 			this.content = up.getAndClearContent();
 			grid.wasUpdated();
+			//Llegue y  prueba romperse
 			if (this.hasFloor()) {
 				grid.tryRemove(this);
 				return true;
