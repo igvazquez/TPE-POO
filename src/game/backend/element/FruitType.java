@@ -1,6 +1,6 @@
 package game.backend.element;
 
-public enum UncombinableElementType {
+public enum FruitType {
 
     CHERRY, HAZELNUT;
 }

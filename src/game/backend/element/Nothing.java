@@ -17,4 +17,9 @@ public class Nothing extends Element {
 		return "NOTHING";
 	}
 
+	@Override
+	public boolean isCombinable() {
+		return false;
+	}
+
 }

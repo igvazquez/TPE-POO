@@ -1,10 +1,7 @@
 package game.backend.cell;
 
-import com.sun.tools.javac.code.Attribute;
 import game.backend.Grid;
 import game.backend.element.Element;
-import game.backend.element.UncombinableElement;
-import game.backend.element.UncombinableElementType;
 
 public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 

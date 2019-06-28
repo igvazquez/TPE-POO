@@ -24,8 +24,8 @@ public abstract class Element {
 		return 0;
 	}
 
-	public boolean isUncombinable(){
-	    return false;
+	public boolean isCombinable(){
+	    return true;
     }
 	
 }

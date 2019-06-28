@@ -22,8 +22,8 @@ public class ImageManager {
 		images.put(new Nothing().getKey(), new Image(IMAGE_PATH + "nothing.png"));
 		images.put(new Bomb().getKey(),  new Image(IMAGE_PATH + "bomb.png"));
 		images.put(new Wall().getKey(),  new Image(IMAGE_PATH + "wall.png"));
-		images.put(new UncombinableElement(UncombinableElementType.CHERRY).getFullKey(), new Image(IMAGE_PATH + "cherry.png"));
-		images.put(new UncombinableElement(UncombinableElementType.HAZELNUT).getFullKey(), new Image(IMAGE_PATH + "hazelnut.png"));
+		images.put(new Fruit(FruitType.CHERRY).getFullKey(), new Image(IMAGE_PATH + "cherry.png"));
+		images.put(new Fruit(FruitType.HAZELNUT).getFullKey(), new Image(IMAGE_PATH + "hazelnut.png"));
 
 		//Agrega todos los colores para caramelos comunes
 		for (CandyColor cc: CandyColor.values()) {

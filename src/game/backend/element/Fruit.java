@@ -1,13 +1,13 @@
 package game.backend.element;
 
-public class UncombinableElement extends Element{
+public class Fruit extends Element{
 
-    private UncombinableElementType type;
+    private FruitType type;
 
-    public UncombinableElement(UncombinableElementType type) {
+    public Fruit(FruitType type) {
         this.type = type;
     }
-    public UncombinableElement(){}
+    public Fruit(){}
 
     @Override
     public boolean isMovable() {
@@ -16,7 +16,7 @@ public class UncombinableElement extends Element{
 
     @Override
     public String getKey() {
-        return "SPECIAL";
+        return "FRUIT";
     }
 
     @Override
@@ -25,7 +25,7 @@ public class UncombinableElement extends Element{
     }
 
     @Override
-    public boolean isUncombinable() {
-        return true;
+    public boolean isCombinable() {
+        return false;
     }
 }

@@ -2,15 +2,15 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.Grid;
+import game.backend.cell.Cell;
 import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Element;
-import game.backend.element.UncombinableElement;
-import game.backend.element.UncombinableElementType;
-import game.backend.move.MoveMakerWithUncombinable;
+import game.backend.element.Fruit;
+import game.backend.element.FruitType;
+import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid {
     public static final int REQUIRED_UNCOMBINABLES = 5;
-
     public static final int UNCOMBINABLE_FRECUENCY = 5;
     public static final int MAX_MOVES = 70;
 
@@ -21,20 +21,20 @@ public class Level5 extends Grid {
     }
 
     @Override
-    public boolean cellRemovalCriteria(int i, int j){
-        return !g()[i][j].getContent().isUncombinable() || i == SIZE-1;
+    public boolean cellRemovalCriteria(Cell cell){
+        return cell.getContent().isCombinable() || cell.isBottom();
     }
 
     @Override
     protected void setMoveMaker() {
-        moveMaker = new MoveMakerWithUncombinable(this);
+        moveMaker = new MoveMakerWithFruits(this);
     }
 
-    private void uncombinableRemoval(){
+    private void fruitRemoval(){
         for(int i = 0; i < SIZE; i++){
-            if(g()[SIZE-1][i].getContent().isUncombinable()){
+            if(!g()[SIZE-1][i].getContent().isCombinable()){
                 clearContent(SIZE-1, i);
-                ((Level5State)state()).addRemovedUncombinable();
+                ((Level5State)state()).addRemovedFruit();
             }
         }
         fallElements();
@@ -45,15 +45,15 @@ public class Level5 extends Grid {
         boolean ret;
         if (ret = super.tryMove(i1, j1, i2, j2)) {
             state().addMove();
-            uncombinableRemoval();
+            fruitRemoval();
         }
         return ret;
     }
 
     @Override
     public Element getSpecialLevelElement() {
-        int i = (int)(Math.random() * UncombinableElementType.values().length);
-        return new UncombinableElement(UncombinableElementType.values()[i]);
+        int i = (int)(Math.random() * FruitType.values().length);
+        return new Fruit(FruitType.values()[i]);
     }
 
     @Override
@@ -69,10 +69,10 @@ public class Level5 extends Grid {
     private class Level5State extends GameState{
 
 
-        private int uncombinablesLeft;
+        private int fruitsLeft;
 
-        public Level5State(int uncombinablesLeft) {
-            this.uncombinablesLeft = uncombinablesLeft;
+        public Level5State(int fruitsLeft) {
+            this.fruitsLeft = fruitsLeft;
         }
 
         @Override
@@ -82,10 +82,11 @@ public class Level5 extends Grid {
 
         @Override
         public boolean playerWon() {
-            return uncombinablesLeft <= 0;
+            return fruitsLeft <= 0;
         }
-        public void addRemovedUncombinable(){
-            uncombinablesLeft--;
+
+        public void addRemovedFruit(){
+            fruitsLeft--;
         }
 
         @Override
@@ -100,7 +101,7 @@ public class Level5 extends Grid {
 
         @Override
         public String getExtraScoreValue() {
-            return String.valueOf(uncombinablesLeft);
+            return String.valueOf(fruitsLeft);
         }
 
     }

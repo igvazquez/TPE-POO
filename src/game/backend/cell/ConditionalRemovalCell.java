@@ -13,7 +13,7 @@ public class ConditionalRemovalCell extends Cell {
 
     @Override
     public void clearContent() {
-        if(grid.cellRemovalCriteria())
-        super.clearContent();
+        if(grid.cellRemovalCriteria(this))
+            super.clearContent();
     }
 }

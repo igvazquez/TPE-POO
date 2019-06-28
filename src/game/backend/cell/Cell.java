@@ -37,6 +37,8 @@ public class Cell {
 		return !content.isSolid();
 	}
 
+	public boolean isCombinable(){ return content.isCombinable(); }
+
 	public Element getContent() {
 		return content;
 	}
@@ -95,6 +97,11 @@ public class Cell {
 	
 	public void setContent(Element content) {
 		this.content = content;
+	}
+
+	public boolean isBottom(){
+		Cell down = around[Direction.DOWN.ordinal()];
+		return !down.isMovable() && hasFloor() && down.isCombinable();
 	}
 
 }

@@ -3,9 +3,9 @@ package game.backend.move;
 import game.backend.Grid;
 import game.backend.element.*;
 
-public class MoveMakerWithUncombinable extends MoveMaker{
+public class MoveMakerWithFruits extends MoveMaker{
 
-    public MoveMakerWithUncombinable(Grid grid) {
+    public MoveMakerWithFruits(Grid grid) {
         super(grid);
     }
 
@@ -13,7 +13,7 @@ public class MoveMakerWithUncombinable extends MoveMaker{
     protected void initMap() {
         super.initMap();
 
-        String specialKey = new UncombinableElement().getKey();
+        String specialKey = new Fruit().getKey();
 
         map.put(specialKey + new Candy().getKey(), new CandyMove(grid));
         map.put(new Candy().getKey() + specialKey, new CandyMove(grid));
