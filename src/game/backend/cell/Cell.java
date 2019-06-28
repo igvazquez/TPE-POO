@@ -8,13 +8,12 @@ import game.backend.move.Direction;
 public class Cell {
 	
 	protected Grid grid;
-	protected Cell[] around;
+	protected Cell[] around = new Cell[Direction.values().length];
 	protected Element content;
 	
 	public Cell(Grid grid) {
 		this.grid = grid;
 		this.content = new Nothing();
-		around = new Cell[Direction.values().length];
 	}
 	
 	public void setAround(Cell up, Cell down, Cell left, Cell right) {
@@ -101,7 +100,7 @@ public class Cell {
 
 	public boolean isBottom(){
 		Cell down = around[Direction.DOWN.ordinal()];
-		return !down.isMovable() && hasFloor() && down.isCombinable();
+		return down != null && !down.isMovable() && hasFloor() && !down.isCombinable();
 	}
 
 }

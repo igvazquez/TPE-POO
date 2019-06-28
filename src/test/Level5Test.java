@@ -23,8 +23,11 @@ public class Level5Test extends Level5 {
             g()[0][i].setAround(new Cell(this),g()[1][i],g()[0][i-1],g()[0][i+1]);*/
 
         Fruit uc = new Fruit(FruitType.CHERRY);
-        g()[SIZE-2][5].setContent(uc);
-        g()[SIZE-2][4].setContent(new Bomb());
+        HorizontalStripedCandy hc = new HorizontalStripedCandy();
+        hc.setColor(CandyColor.RED);
+        g()[5][5].setContent(uc);
+        g()[5][4].setContent(new Bomb());
+        g()[5][3].setContent(new Bomb());
 
 
     }

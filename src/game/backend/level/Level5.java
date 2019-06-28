@@ -3,6 +3,7 @@ package game.backend.level;
 import game.backend.GameState;
 import game.backend.Grid;
 import game.backend.cell.Cell;
+import game.backend.cell.ConditionalRemovalCell;
 import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Element;
 import game.backend.element.Fruit;
@@ -16,13 +17,18 @@ public class Level5 extends Grid {
 
 
     @Override
+    protected Cell cellCreator() {
+        return new ConditionalRemovalCell(this);
+    }
+
+    @Override
     protected GameState newState() {
         return new Level5State(REQUIRED_UNCOMBINABLES);
     }
 
     @Override
     public boolean cellRemovalCriteria(Cell cell){
-        return cell.getContent().isCombinable() || cell.isBottom();
+        return cell.isMovable() && (cell.getContent().isCombinable() || cell.isBottom());
     }
 
     @Override
@@ -61,11 +67,6 @@ public class Level5 extends Grid {
         candyGenCell = new SpecialCandyGeneratorCell(this, UNCOMBINABLE_FRECUENCY, REQUIRED_UNCOMBINABLES);
     }
 
-    @Override
-    public void clearContent(int i, int j) {
-        if(cellRemovalCriteria(i, j))
-            super.clearContent(i, j);
-    }
     private class Level5State extends GameState{
 
 

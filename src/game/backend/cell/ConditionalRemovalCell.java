@@ -5,10 +5,8 @@ import game.backend.move.Direction;
 
 public class ConditionalRemovalCell extends Cell {
 
-
     public ConditionalRemovalCell(Grid grid) {
         super(grid);
-        around = new ConditionalRemovalCell[Direction.values().length];
     }
 
     @Override
@@ -16,4 +14,6 @@ public class ConditionalRemovalCell extends Cell {
         if(grid.cellRemovalCriteria(this))
             super.clearContent();
     }
+
+
 }
