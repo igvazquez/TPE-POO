@@ -1,6 +1,8 @@
 package game.frontend.gameInfo;
 
 import game.backend.GameState;
+import game.backend.Grid;
+import game.backend.element.Element;
 
 public abstract class GameInfo {
     protected GameState gameState;
@@ -17,9 +19,11 @@ public abstract class GameInfo {
 
     public abstract String levelName();
 
-    //public abstract boolean hasCandyText();
+    public boolean hasCandyText(){
+        return false;
+    }
 
-    public String getCandyText(String key){
-        throw new IllegalArgumentException();
+    public String getCandyText(Element candy, Grid level){
+            throw new IllegalArgumentException();
     }
 }
