@@ -1,4 +1,4 @@
-package game.backend.level.gameInfo;
+package game.frontend.gameInfo;
 
 import game.backend.GameState;
 import game.backend.level.gameState.Level3State;

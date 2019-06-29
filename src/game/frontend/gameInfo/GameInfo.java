@@ -1,7 +1,6 @@
-package game.backend.level.gameInfo;
+package game.frontend.gameInfo;
 
 import game.backend.GameState;
-import game.backend.element.Candy;
 
 public abstract class GameInfo {
     protected GameState gameState;
