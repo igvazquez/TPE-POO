@@ -7,6 +7,7 @@ import game.backend.element.CandyColor;
 import game.backend.element.Element;
 import game.backend.element.MoveLimits;
 import game.backend.element.TimeElement;
+import game.backend.level.gameState.Level3State;
 
 import java.util.Comparator;
 import java.util.SortedMap;
@@ -51,6 +52,15 @@ public class Level3 extends Grid {
     }
 
     @Override
+    public boolean tryMove(int i1, int j1, int i2, int j2) {
+        boolean rta;
+        if(rta = super.tryMove(i1, j1, i2, j1))
+            ((Level3State)state()).setClosestExpirationTime(getClosestExpirationTime());
+        return rta;
+    }
+
+
+    @Override
     public Element getSpecialLevelElement() {
 
         int i = (int)(Math.random() * CandyColor.values().length);
@@ -66,40 +76,6 @@ public class Level3 extends Grid {
         return ans;
     }
 
-
-    private class Level3State extends GameState{
-
-        private int requiredScore;
-
-        public Level3State(int requiredScore ) {
-            this.requiredScore = requiredScore;
-        }
-
-        @Override
-        public boolean gameOver() {
-            return playerWon() || getClosestExpirationTime() <= getMoves();
-        }
-
-        @Override
-        public boolean playerWon() {
-            return requiredScore >= getScore();
-        }
-
-        @Override
-        public String getExtraScoreMessage() {
-            return "Moves Left: ";
-        }
-
-        @Override
-        public String getExtraScoreValue() {
-            return super.getExtraScoreValue();
-        }
-
-        @Override
-        public boolean hasExtraScoreInfo() {
-            return super.hasExtraScoreInfo();
-        }
-    }
 
 
 }
