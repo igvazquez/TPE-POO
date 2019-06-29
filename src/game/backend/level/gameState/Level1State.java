@@ -20,22 +20,7 @@ public class Level1State extends GameState{
             return getScore() > requiredScore;
         }
 
-        @Override
-        public boolean hasExtraScoreInfo() {
-            return true;
-        }
-
-        @Override
-        public String getExtraScoreMessage() {
-            return "Moves left: ";
-        }
-
         public Long getMovesLeft() {
             return maxMoves - getMoves();
-        }
-
-        @Override
-        public String getExtraScoreValue() {
-            return getMovesLeft().toString();
         }
 }

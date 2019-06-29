@@ -15,8 +15,9 @@ public class GameApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		CandyGame game = new CandyGame(Level5.class);
-		CandyFrame frame = new CandyFrame(game);
+		Levels levelEnum = Levels.LEVEL3; //Aca se elige el nivel.
+		CandyGame game = new CandyGame(levelEnum.getLevel());
+		CandyFrame frame = new CandyFrame(game, levelEnum.getGameInfo());
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);

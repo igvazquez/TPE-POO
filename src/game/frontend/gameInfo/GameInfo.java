@@ -7,15 +7,23 @@ import game.backend.element.Element;
 public abstract class GameInfo {
     protected GameState gameState;
 
-    public GameInfo(GameState gameState) {
+    public void setGameState(GameState gameState){
         this.gameState = gameState;
     }
+
     public String bottomPanelInfo() {
-        return "Score:" + gameState.getScore();
+        StringBuilder message = new StringBuilder("Score:").append(gameState.getScore());
+        if(gameState.gameOver())
+            if(gameState.playerWon())
+                message.append(wonMessage());
+            message.append(lossMessage());
+        return message.toString();
     }
+
     private String wonMessage(){
         return "Player won incredible you are the best, man";
     }
+    private String lossMessage(){ return "Player loss gatovich";}
 
     public abstract String levelName();
 
@@ -24,6 +32,6 @@ public abstract class GameInfo {
     }
 
     public String getCandyText(Element candy, Grid level){
-            throw new IllegalArgumentException();
+            return null;
     }
 }

@@ -24,12 +24,6 @@ public class Level3State extends GameState {
         return requiredScore >= getScore();
     }
 
-
-    @Override
-    public boolean hasExtraScoreInfo() {
-        return true;
-    }
-
     public int getClosestExpirationTime() {
         return closestExpirationTime;
     }

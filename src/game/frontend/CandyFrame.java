@@ -5,6 +5,7 @@ import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
 
+import game.frontend.gameInfo.GameInfo;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
@@ -22,9 +23,11 @@ public class CandyFrame extends VBox {
 	private ImageManager images;
 	private Point2D lastPoint;
 	private CandyGame game;
+	private GameInfo gameInfo;
 
-	public CandyFrame(CandyGame game) {
+	public CandyFrame(CandyGame game, GameInfo gameInfo) {
 		this.game = game;
+		this.gameInfo = gameInfo;
 		getChildren().add(new AppMenu());
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
@@ -32,7 +35,7 @@ public class CandyFrame extends VBox {
 		scorePanel = new ScorePanel();
 		getChildren().add(scorePanel);
 		game.initGame();
-		GameListener listener = new ScreenUpdater(images,boardPanel,game());
+		GameListener listener = new ScreenUpdater(images,boardPanel,game(), gameInfo);
 		game.addGameListener(listener);
 
 		listener.gridUpdated();
@@ -46,7 +49,7 @@ public class CandyFrame extends VBox {
 				if (newPoint != null) {
 					System.out.println("Get second = " +  newPoint);
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
-					scorePanel.updateScore(getScorePanelMessage());
+					scorePanel.updateScore(gameInfo.bottomPanelInfo());
 					lastPoint = null;
 				}
 			}
@@ -54,24 +57,6 @@ public class CandyFrame extends VBox {
 
 	}
 
-	private String getScorePanelMessage(){
-		StringBuilder message = new StringBuilder("Score: ");
-		message.append(((Long) game.getScore()).toString()).append(" ");
-		if (game().isFinished()) {
-			if (game().playerWon()) {
-				message.append(" Finished - Player Won!");
-			} else {
-				message.append(" Finished - Loser !");
-			}
-		}else if(game.hasExtraScoreInfo()){
-			message.append(game.getExtraScoreMessage());
-			message.append(game.getExtraScoreValue());
-		}
-
-		return message.toString();
-
-
-	}
 
 	private CandyGame game() {
 		return game;

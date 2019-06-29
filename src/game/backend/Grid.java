@@ -155,6 +155,10 @@ public abstract class Grid {
 		g[i2][j2].setContent(e);
 		wasUpdated();
 	}
+
+	public GameState getGameState(){
+		return state;
+	}
 	
 	public GameState createState() {
 		this.state = newState();

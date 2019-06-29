@@ -25,11 +25,6 @@ public class Level5State extends GameState {
         fruitsLeft--;
     }
 
-    @Override
-    public boolean hasExtraScoreInfo() {
-        return true;
-    }
-
     public int getMovesLeft(){
         return getMaxMoves() - getMoves();
     }
