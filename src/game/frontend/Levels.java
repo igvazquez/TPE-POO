@@ -12,29 +12,39 @@ import game.frontend.gameInfo.GameInfoLevel5;
 
 public enum Levels {
 
-    LEVEL1(new Level1(), new GameInfoLevel1()),
+    LEVEL1(new Level1()){
+        @Override
+        public GameInfo createGameInfo(){
+            return new GameInfoLevel1(getLevel().getGameState());
+        }
+    },
     //LEVEL2(Level2.class, new GameInfoLevel2()),
-    LEVEL3(new Level3(), new GameInfoLevel3()),
+    LEVEL3(new Level3()){
+        @Override
+        public GameInfo createGameInfo(){
+            return new GameInfoLevel3(getLevel().getGameState());
+        }
+    },
     //LEVEL4(Level4.class, new GameInfoLevel4()),
-    LEVEL5(new Level5(), new GameInfoLevel5());
+    LEVEL5(new Level5()){
+        @Override
+        public GameInfo createGameInfo(){
+            return new GameInfoLevel5(getLevel().getGameState());
+        }
+    };
     //LEVEL6(Level6.class, new GameInfoLevel6()),
 
 
     private Grid level;
-    private GameInfo gameInfo;
 
 
-    Levels(Grid level, GameInfo gameInfo) {
+    Levels(Grid level) {
         this.level = level;
-        this.gameInfo = gameInfo;
-        gameInfo.setGameState(level.getGameState());
     }
+
+    public abstract GameInfo createGameInfo();
 
     public Grid getLevel() {
         return level;
-    }
-
-    public GameInfo getGameInfo() {
-        return gameInfo;
     }
 }

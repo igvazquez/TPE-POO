@@ -25,9 +25,8 @@ public class CandyFrame extends VBox {
 	private CandyGame game;
 	private GameInfo gameInfo;
 
-	public CandyFrame(CandyGame game, GameInfo gameInfo) {
+	public CandyFrame(CandyGame game, Levels levelEnum) {
 		this.game = game;
-		this.gameInfo = gameInfo;
 		getChildren().add(new AppMenu());
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
@@ -35,6 +34,7 @@ public class CandyFrame extends VBox {
 		scorePanel = new ScorePanel();
 		getChildren().add(scorePanel);
 		game.initGame();
+		this.gameInfo = levelEnum.createGameInfo();
 		GameListener listener = new ScreenUpdater(images,boardPanel,game(), gameInfo);
 		game.addGameListener(listener);
 

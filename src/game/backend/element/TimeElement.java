@@ -14,18 +14,4 @@ public class TimeElement extends Candy {
         super(color);
         this.expirationTime = lifeSpan + creationMove;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TimeElement)) return false;
-        if (!super.equals(o)) return false;
-        TimeElement timeElement = (TimeElement) o;
-        return expirationTime == timeElement.expirationTime;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), expirationTime);
-    }
 }

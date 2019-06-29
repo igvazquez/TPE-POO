@@ -17,14 +17,14 @@ public class Level3 extends Grid {
 
     private static int REQUIRED_SCORE = 5000;
     private static final int FRECUENCY = 3;
-    private static final int AMOUNT = 1;
+    private static final int AMOUNT = 10;
 
     private SortedMap<TimeElement,Integer> currentBombs;
 
     @Override
     public void initialize() {
-        super.initialize();
         currentBombs = new TreeMap<>(Comparator.comparing(TimeElement::getExpirationTime));
+        super.initialize();
     }
 
     @Override
@@ -39,26 +39,36 @@ public class Level3 extends Grid {
 
     @Override
     public void cellExplosion(Element e) {
-        if(currentBombs.containsKey(e))
-            if(currentBombs.get(e) <= 1)
+        if(isElementExpirable(e)) {
+            if (currentBombs.get(e) <= 1)
                 currentBombs.remove(e);
             else
-                currentBombs.put( (TimeElement) e, currentBombs.get(e) - 1);
+                currentBombs.put((TimeElement) e, currentBombs.get(e) - 1);
+        }
         super.cellExplosion(e);
     }
 
-    private int getClosestExpirationTime(){
-        return currentBombs.firstKey().getExpirationTime();
+    public boolean isElementExpirable(Element e){
+        if(e instanceof TimeElement)
+            return currentBombs.containsKey(e);
+        return false;
+    }
+
+    private Integer getClosestExpirationTime(){
+        if(!currentBombs.isEmpty())
+            return currentBombs.firstKey().getExpirationTime();
+        return null;
     }
 
     @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         boolean rta;
-        if(rta = super.tryMove(i1, j1, i2, j1))
-            ((Level3State)state()).setClosestExpirationTime(getClosestExpirationTime());
+        if(rta = super.tryMove(i1, j1, i2, j2)) {
+            state().addMove();
+            ((Level3State) state()).setClosestExpirationTime(getClosestExpirationTime());
+        }
         return rta;
     }
-
 
     @Override
     public Element getSpecialLevelElement() {
@@ -74,10 +84,6 @@ public class Level3 extends Grid {
             currentBombs.put( ans, 1);
 
         return ans;
-    }
-
-    public boolean isElementExpirable(Element e){
-        return currentBombs.containsKey(e);
     }
 
 }

@@ -9,13 +9,28 @@ import game.backend.level.gameState.Level3State;
 
 public class GameInfoLevel3 extends GameInfo {
 
+    public GameInfoLevel3(GameState gameState) {
+        super(gameState);
+    }
+
+    @Override
+    protected String auxBottomPanelInfo() {
+        return movementsLeft() + " - " + super.auxBottomPanelInfo();
+    }
+
     @Override
     public String levelName() {
         return "Level 3";
     }
 
     private String movementsLeft() {
-        return "Movements left" + ((Level3State) gameState).getClosestExpirationTime();
+        Integer movsLeft = ((Level3State) gameState).getMovementsLeft();
+        String message = "Movements left: ";
+        if(movsLeft != null)
+            message += movsLeft;
+        else
+            message += "Infinit";
+        return message;
     }
 
     @Override

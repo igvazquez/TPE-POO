@@ -7,17 +7,22 @@ import game.backend.element.Element;
 public abstract class GameInfo {
     protected GameState gameState;
 
-    public void setGameState(GameState gameState){
+    public GameInfo(GameState gameState) {
         this.gameState = gameState;
     }
 
-    public String bottomPanelInfo() {
-        StringBuilder message = new StringBuilder("Score:").append(gameState.getScore());
-        if(gameState.gameOver())
-            if(gameState.playerWon())
-                message.append(wonMessage());
-            message.append(lossMessage());
-        return message.toString();
+    protected String auxBottomPanelInfo() {
+        return "Score: " + gameState.getScore();
+    }
+
+    public String bottomPanelInfo(){
+        if(gameState.gameOver()) {
+            if (gameState.playerWon())
+                return wonMessage();
+            else
+                return lossMessage();
+        }
+        return auxBottomPanelInfo();
     }
 
     private String wonMessage(){
