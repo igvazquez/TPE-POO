@@ -30,14 +30,15 @@ public class Level5State extends GameState {
         return true;
     }
 
-    @Override
-    public String getExtraScoreMessage() {
-        return "Fruits left: ";
+    public int getMovesLeft(){
+        return getMaxMoves() - getMoves();
     }
 
-    @Override
-    public String getExtraScoreValue() {
-        return String.valueOf(fruitsLeft);
+    public int getMaxMoves() {
+        return maxMoves;
     }
 
+    public int getFruitsLeft() {
+        return fruitsLeft;
+    }
 }

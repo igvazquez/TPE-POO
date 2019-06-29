@@ -34,7 +34,7 @@ public class Level3 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, FRECUENCY, AMOUNT);;
+        candyGenCell = new SpecialCandyGeneratorCell(this, FRECUENCY, AMOUNT);
     }
 
     @Override

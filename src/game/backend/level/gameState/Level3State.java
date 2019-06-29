@@ -24,18 +24,13 @@ public class Level3State extends GameState {
         return requiredScore >= getScore();
     }
 
-    @Override
-    public String getExtraScoreMessage() {
-        return "Moves Left: ";
-    }
-
-    @Override
-    public String getExtraScoreValue() {
-        return String.valueOf(closestExpirationTime);
-    }
 
     @Override
     public boolean hasExtraScoreInfo() {
         return true;
+    }
+
+    public int getClosestExpirationTime() {
+        return closestExpirationTime;
     }
 }
