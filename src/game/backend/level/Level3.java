@@ -71,7 +71,7 @@ public class Level3 extends Grid {
 
         private int requiredScore;
 
-        public Level3State(int requiredScore, ) {
+        public Level3State(int requiredScore ) {
             this.requiredScore = requiredScore;
         }
 
