@@ -76,6 +76,8 @@ public class Level3 extends Grid {
         return ans;
     }
 
-
+    public boolean isElementExpirable(Element e){
+        return currentBombs.containsKey(e);
+    }
 
 }
