@@ -38,7 +38,7 @@ public class ScreenUpdater implements GameListener {
                 Element element = cell.getContent();
                 Image image = images.getImage(element);
                 timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element, game.getGrid()))));
+                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element))));
             }
             frameTime = frameTime.add(frameGap);
         }
