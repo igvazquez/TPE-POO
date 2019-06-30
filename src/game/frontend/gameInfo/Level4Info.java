@@ -1,10 +1,11 @@
 package game.frontend.gameInfo;
 
 import game.backend.element.Element;
+import game.backend.element.TimeCandy;
 import game.backend.level.gameState.GameState;
 import game.backend.level.gameState.Level4State;
 
-public class Level4Info extends LevelInfo{
+public class Level4Info extends LevelInfo {
 
     public Level4Info(GameState gameState) {
         super(gameState);
@@ -27,6 +28,12 @@ public class Level4Info extends LevelInfo{
 
     @Override
     public String getElementText(Element element) {
-        return super.getElementText(element);
+        if (element.hasBonus())
+            return "+" + ((TimeCandy)element).getBonusTime();
+        else
+            return null;
     }
+
 }
+
+
