@@ -2,6 +2,7 @@ package game.frontend.gameInfo;
 
 import game.backend.element.Element;
 import game.backend.level.gameState.GameState;
+import game.backend.level.gameState.Level4State;
 
 public class Level4Info extends LevelInfo{
 
@@ -11,7 +12,7 @@ public class Level4Info extends LevelInfo{
 
     @Override
     protected String auxLevelStateInfo() {
-        return ;
+        return "Time Left :" + ((Level4State)gameState).getTime();
     }
 
     @Override
