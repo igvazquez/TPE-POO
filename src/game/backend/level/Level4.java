@@ -9,8 +9,14 @@ import game.backend.level.gameState.GameState;
 import game.backend.level.gameState.Level4State;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class Level4 extends Grid {
+
+    private static final int SECOND = 1000;
+    private static final int TIMER_DELAY = SECOND/2;
+    private static final int INITIAL_TIME = 120*SECOND;
+
 
     private Timer timer;
 
@@ -23,6 +29,12 @@ public class Level4 extends Grid {
     public void initialize() {
         super.initialize();
         timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                ((Level4State)state()).subSecond();
+            }
+        }, TIMER_DELAY, INITIAL_TIME);
     }
 
     @Override

@@ -15,7 +15,7 @@ public class GameApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		Levels levelEnum = Levels.LEVEL3; //Aca se elige el nivel.
+		Levels levelEnum = Levels.LEVEL5; //Aca se elige el nivel.
 		CandyGame game = new CandyGame(levelEnum.getLevel());
 		CandyFrame frame = new CandyFrame(game, levelEnum);
 		Scene scene = new Scene(frame);

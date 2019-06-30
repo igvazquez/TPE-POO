@@ -1,7 +1,6 @@
 package game.backend.cell;
 
 import game.backend.Grid;
-import game.backend.move.Direction;
 
 public class ConditionalRemovalCell extends Cell {
 
@@ -10,9 +9,10 @@ public class ConditionalRemovalCell extends Cell {
     }
 
     @Override
-    public void clearContent() {
+    public boolean clearContent() {
         if(grid.cellRemovalCriteria(this))
-            super.clearContent();
+            return super.clearContent();
+        return false;
     }
 
 

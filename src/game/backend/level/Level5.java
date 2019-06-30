@@ -29,7 +29,7 @@ public class Level5 extends Grid {
 
     @Override
     public boolean cellRemovalCriteria(Cell cell){
-        return cell.isMovable() && (cell.getContent().isCombinable() || cell.isBottom());
+        return cell.isMovable() && (cell.isCombinable() || cell.isBottom());
     }
 
     @Override
