@@ -19,10 +19,8 @@ public class Level4 extends Grid {
     private static final int TIMER_DELAY = SECOND/2;
     private static final int INITIAL_TIME = 120;
     private static final int FREQUENCY = 1;
-    private static final int AMOUNT = 5; //ACA tambien hay que poner -1 amount.
     private static final int INITIAL_AMOUNT = 3;
     private static final int REQUIRED_SCORE = 12000;
-
 
     @Override
     protected GameState newState() {
@@ -43,7 +41,7 @@ public class Level4 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, FREQUENCY, AMOUNT, INITIAL_AMOUNT);
+        candyGenCell = new SpecialCandyGeneratorCell(this, FREQUENCY, SpecialCandyGeneratorCell.UNLIMITED_AMOUNT_KEY, INITIAL_AMOUNT);
     }
 
     @Override
