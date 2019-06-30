@@ -22,7 +22,7 @@ public class Level4 extends Grid {
 
     @Override
     protected GameState newState() {
-        return new Level4State();
+        return new Level4State(INITIAL_TIME);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Level4 extends Grid {
             public void run() {
                 ((Level4State)state()).subSecond();
             }
-        }, TIMER_DELAY, INITIAL_TIME);
+        }, TIMER_DELAY, SECOND);
     }
 
     @Override
