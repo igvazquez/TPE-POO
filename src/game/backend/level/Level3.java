@@ -19,7 +19,7 @@ public class Level3 extends Grid {
     private static final int EXPIRABLE_CANDY_FREQUENCY = 3;
     private static final int MAX_EXPIRABLE_CANDY_AMOUNT = 10; //Que acepte negativos para significar "infinitos"
 
-    private SortedMap<ExpirableCandy,Integer> expirablesTracker; //MODIFICAR PARA QUE LOS CANDY NO SEAN KEYS
+    private SortedMap<Integer,Integer> expirablesTracker; //MODIFICAR PARA QUE LOS CANDY NO SEAN KEYS
 
     @Override
     public void initialize() {
@@ -39,20 +39,17 @@ public class Level3 extends Grid {
 
     @Override
     public void cellExplosion(Element e) {
-        if(isElementExpirable(e)) {
-            if (expirablesTracker.get(e) <= 1) //ADAPTAR FUNCION PARA EL NUEVO MAP. Puede ser crear la interfaz expirable.
-                expirablesTracker.remove(e);
+        Integer aux;
+        if(e.isExpirable()) {
+            aux = ((ExpirableCandy)e).getExpirationMove();
+            if (expirablesTracker.get(aux) <= 1) //ADAPTAR FUNCION PARA EL NUEVO MAP. Puede ser crear la interfaz expirable.
+                expirablesTracker.remove(aux);
             else
-                expirablesTracker.put((ExpirableCandy) e, expirablesTracker.get(e) - 1);
+                expirablesTracker.put(aux, expirablesTracker.get(aux) - 1);
         }
         super.cellExplosion(e);
     }
 
-    public boolean isElementExpirable(Element e){ //MODIFICAR METODO PARA QUE NO USE INSTANCEOF
-        if(e instanceof ExpirableCandy)
-            return expirablesTracker.containsKey(e);
-        return false;
-    }
 
     private Integer getClosestExpirationTime(){
         if(!expirablesTracker.isEmpty())
