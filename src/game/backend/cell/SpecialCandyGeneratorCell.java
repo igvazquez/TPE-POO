@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 
-    private static final int UNLIMITED_AMOUNT_KEY = -1;
+    public static final int UNLIMITED_AMOUNT_KEY = -1;
     private int frequency;
     private int amount;
     private int lastMove;
