@@ -12,7 +12,7 @@ public class Level4Info extends LevelInfo{
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Time Left :" + ((Level4State)gameState).getTime();
+        return "Time Left :" + ((Level4State)gameState).getTime() + super.auxLevelStateInfo();
     }
 
     @Override
