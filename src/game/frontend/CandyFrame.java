@@ -8,9 +8,13 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class CandyFrame extends VBox {
 
 	private static final int CELL_SIZE = 65;
+	private static final int TIMER_INIT_DELAY = 200;
 
 	private BoardPanel boardPanel;
 	private GameStateInfoPanel gameStateInfoPanel;
@@ -33,6 +37,17 @@ public class CandyFrame extends VBox {
 		game.addGameListener(listener);
 
 		listener.gridUpdated();
+
+		/*if(levelInfo.hasToUpdateInfo()){
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				@Override
+				public void run() {
+					gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
+				}
+			}, TIMER_INIT_DELAY, levelInfo.getInfoRefreshRate());
+
+		}*/
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {

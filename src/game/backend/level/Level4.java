@@ -16,13 +16,13 @@ public class Level4 extends Grid {
 
     private static final int SECOND = 1000;
     private static final int TIMER_DELAY = SECOND/2;
-    private static final int INITIAL_TIME = 120*SECOND;
-    private static final int FREQUENCY = 5;
-    private static final int AMOUNT = 5;
+    private static final int INITIAL_TIME = 120;
+    private static final int FREQUENCY = 2;
+    private static final int AMOUNT = 5; //ACA tambien hay que poner -1 amount.
     private static final int INITIAL_AMOUNT = 3;
 
 
-    private Timer timer;
+    //private Timer timer;
 
     @Override
     protected GameState newState() {
@@ -32,7 +32,7 @@ public class Level4 extends Grid {
     @Override
     public void initialize() {
         super.initialize();
-        timer = new Timer();
+        Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -58,6 +58,7 @@ public class Level4 extends Grid {
 
     @Override
     public Element getSpecialLevelElement() {
+
         int i = (int)(Math.random() * CandyColor.values().length);
         int j = (int)(Math.random() * BonusTimesEnum.values().length);
 

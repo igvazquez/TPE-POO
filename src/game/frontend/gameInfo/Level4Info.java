@@ -7,13 +7,15 @@ import game.backend.level.gameState.Level4State;
 
 public class Level4Info extends LevelInfo {
 
+    private static final int SECOND = 1000;
+
     public Level4Info(GameState gameState) {
         super(gameState);
     }
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Time Left :" + ((Level4State)gameState).getTime() + super.auxLevelStateInfo();
+        return "Time Left: " + ((Level4State)gameState).getTime() + super.auxLevelStateInfo();
     }
 
     @Override
@@ -29,6 +31,15 @@ public class Level4Info extends LevelInfo {
             return null;
     }
 
+    @Override
+    public boolean hasToUpdateInfo() {
+        return true;
+    }
+
+    @Override
+    public int getInfoRefreshRate() {
+        return SECOND/2;
+    }
 }
 
 

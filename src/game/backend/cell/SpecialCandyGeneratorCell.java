@@ -54,7 +54,7 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     }
 
     private boolean inGameValidation() {
-        return grid.getCurrentMoves() % frequency == 0 && grid.getCurrentMoves() != lastMove && grid.getCurrentMoves() / frequency <= amount;
+        return (grid.getCurrentMoves() % frequency == 0) && (grid.getCurrentMoves() != lastMove) && (grid.getCurrentMoves() / frequency <= amount);
     }
 
     private boolean initializingValidation(){

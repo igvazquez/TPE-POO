@@ -29,6 +29,12 @@ public abstract class LevelInfo {
         return "Player won incredible you are the best, man";
     }
     private String lossMessage(){ return "Player loss gatovich";}
+    public boolean hasToUpdateInfo(){
+        return false;
+    }
+    public int getInfoRefreshRate(){
+        throw new IllegalStateException();
+    }
 
     public abstract String levelName();
 
