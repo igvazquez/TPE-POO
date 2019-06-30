@@ -4,10 +4,15 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 
 import game.frontend.gameInfo.LevelInfo;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
+import java.text.DateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -47,6 +52,19 @@ public class CandyFrame extends VBox {
 				}
 			}, TIMER_INIT_DELAY, levelInfo.getInfoRefreshRate());
 		}*/
+
+		if(levelInfo.hasToUpdateInfo()) {
+			final Timeline timeline = new Timeline(
+					new KeyFrame(
+							Duration.millis(500),
+							event -> {
+								gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
+							}
+					)
+			);
+			timeline.setCycleCount(Animation.INDEFINITE);
+			timeline.play();
+		}
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
