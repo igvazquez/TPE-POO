@@ -8,6 +8,7 @@ import java.util.List;
 
 public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 
+    private static final int UNLIMITED_AMOUNT_KEY = -1;
     private int frequency;
     private int amount;
     private int lastMove;
@@ -54,7 +55,7 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     }
 
     private boolean inGameValidation() {
-        return (grid.getCurrentMoves() % frequency == 0) && (grid.getCurrentMoves() != lastMove) && (grid.getCurrentMoves() / frequency <= amount);
+        return (grid.getCurrentMoves() != lastMove) &&  (grid.getCurrentMoves() % frequency == 0) && ( amount == UNLIMITED_AMOUNT_KEY || (grid.getCurrentMoves() / frequency <= amount));
     }
 
     private boolean initializingValidation(){
