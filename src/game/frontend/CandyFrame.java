@@ -43,10 +43,9 @@ public class CandyFrame extends VBox {
 			timer.scheduleAtFixedRate(new TimerTask() {
 				@Override
 				public void run() {
-					gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
+						updateInfo();
 				}
 			}, TIMER_INIT_DELAY, levelInfo.getInfoRefreshRate());
-
 		}*/
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -75,6 +74,10 @@ public class CandyFrame extends VBox {
 		double i = x / CELL_SIZE;
 		double j = y / CELL_SIZE;
 		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
+	}
+
+	public void updateInfo(){
+		gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
 	}
 
 }

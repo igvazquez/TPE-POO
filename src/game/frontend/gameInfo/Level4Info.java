@@ -15,7 +15,7 @@ public class Level4Info extends LevelInfo {
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Time Left: " + ((Level4State)gameState).getTime() + super.auxLevelStateInfo();
+        return "Time Left: " + ((Level4State)gameState).getTime() + " " + super.auxLevelStateInfo();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Level4Info extends LevelInfo {
 
     @Override
     public int getInfoRefreshRate() {
-        return SECOND/2;
+        return SECOND;
     }
 }
 
