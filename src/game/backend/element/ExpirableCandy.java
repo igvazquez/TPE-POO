@@ -12,4 +12,9 @@ public class ExpirableCandy extends Candy {
         super(color);
         this.expirationMove = lifeSpan + creationMove;
     }
+
+    @Override
+    public boolean isExpirable(){
+        return true;
+    }
 }

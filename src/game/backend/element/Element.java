@@ -27,4 +27,8 @@ public abstract class Element {
 	public boolean isCombinable(){
 	    return true;
     }
+
+    public boolean isExpirable(){
+		return false;
+	}
 }
