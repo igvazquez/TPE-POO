@@ -17,8 +17,9 @@ public class Level4 extends Grid {
     private static final int SECOND = 1000;
     private static final int TIMER_DELAY = SECOND/2;
     private static final int INITIAL_TIME = 120*SECOND;
-    private static final int FREQUENCY = 120*SECOND;
-    private static final int AMOUNT = 120*SECOND;
+    private static final int FREQUENCY = 5;
+    private static final int AMOUNT = 5;
+    private static final int INITIAL_AMOUNT = 3;
 
 
     private Timer timer;
@@ -42,7 +43,7 @@ public class Level4 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, FREQUENCY, AMOUNT);
+        candyGenCell = new SpecialCandyGeneratorCell(this, FREQUENCY, AMOUNT, INITIAL_AMOUNT);
     }
 
     @Override

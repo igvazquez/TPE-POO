@@ -12,9 +12,11 @@ import game.backend.level.gameState.Level5State;
 import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid {
+
     public static final int REQUIRED_FRUITS = 5;
-    public static final int FRUIT_FREQUENCY = 5;
+    public static final int FRUIT_FREQUENCY = 2;
     public static final int MAX_MOVES = 70;
+    private static final int INITIAL_AMOUNT = 3;
 
 
     @Override
@@ -30,6 +32,12 @@ public class Level5 extends Grid {
     @Override
     public boolean cellRemovalCriteria(Cell cell){
         return cell.isMovable() && (cell.isCombinable() || cell.isBottom());
+    }
+
+    @Override
+    public void initialize() {
+        super.initialize();
+        while (fruitRemoval());
     }
 
     @Override
@@ -68,7 +76,7 @@ public class Level5 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, FRUIT_FREQUENCY, REQUIRED_FRUITS);
+        candyGenCell = new SpecialCandyGeneratorCell(this, FRUIT_FREQUENCY, REQUIRED_FRUITS, INITIAL_AMOUNT);
     }
 
 }
