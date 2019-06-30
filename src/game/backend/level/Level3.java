@@ -23,7 +23,7 @@ public class Level3 extends Grid {
 
     @Override
     public void initialize() {
-        expirablesTracker = new TreeMap<>(Comparator.comparing(ExpirableCandy::getExpirationMove));
+        expirablesTracker = new TreeMap<>();
         super.initialize();
     }
 
@@ -75,10 +75,10 @@ public class Level3 extends Grid {
 
         ExpirableCandy ans = new ExpirableCandy(CandyColor.values()[i], MoveLimits.values()[j].getValue(), state().getMoves());
 
-        if(expirablesTracker.containsKey(ans))
-            expirablesTracker.put( ans, expirablesTracker.get(ans) + 1);
+        if(expirablesTracker.containsKey(ans.getExpirationMove()))
+            expirablesTracker.put( ans.getExpirationMove(), expirablesTracker.get(ans.getExpirationMove()) + 1);
         else
-            expirablesTracker.put( ans, 1);
+            expirablesTracker.put( ans.getExpirationMove(), 1);
 
         return ans;
     }
