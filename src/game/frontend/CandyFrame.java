@@ -43,23 +43,11 @@ public class CandyFrame extends VBox {
 
 		listener.gridUpdated();
 
-		/*if(levelInfo.hasToUpdateInfo()){
-			Timer timer = new Timer();
-			timer.scheduleAtFixedRate(new TimerTask() {
-				@Override
-				public void run() {
-						updateInfo();
-				}
-			}, TIMER_INIT_DELAY, levelInfo.getInfoRefreshRate());
-		}*/
-
 		if(levelInfo.hasToUpdateInfo()) {
 			final Timeline timeline = new Timeline(
 					new KeyFrame(
-							Duration.millis(500),
-							event -> {
-								gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
-							}
+							Duration.millis(levelInfo.getInfoRefreshRate()),
+							event -> gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo())
 					)
 			);
 			timeline.setCycleCount(Animation.INDEFINITE);

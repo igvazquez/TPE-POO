@@ -13,7 +13,7 @@ import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid {
 
-    public static final int REQUIRED_FRUITS = 5;
+    public static final int REQUIRED_FRUITS = 10;
     public static final int FRUIT_FREQUENCY = 2;
     public static final int MAX_MOVES = 70;
     private static final int INITIAL_AMOUNT = 3;

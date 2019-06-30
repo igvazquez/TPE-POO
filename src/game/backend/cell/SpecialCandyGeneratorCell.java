@@ -17,17 +17,16 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 
 
     public SpecialCandyGeneratorCell(Grid grid, int frequency, int amount, int initialAmount) {
+
         super(grid);
+
         this.frequency = frequency;
-        this.amount = amount - initialAmount;
-        initialValues = new ArrayList<>();
-        int aux;
-        for(int i = 0; i < initialAmount ; i++) {
-            do {
-                aux = (int) (Math.random() * Grid.SIZE * Grid.SIZE);
-            }while (belongsToMatrixBorders(aux));
-            initialValues.add(aux);
-        }
+        this.amount = amount;
+
+        if(amount != UNLIMITED_AMOUNT_KEY)
+            this.amount -= initialAmount;
+
+        createInitialSpecialElementPositionsSet(initialAmount);
     }
 
     @Override
@@ -60,5 +59,18 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 
     private boolean initializingValidation(){
         return lastMove == 0 && initialValues.contains(counter++);
+    }
+
+    private void createInitialSpecialElementPositionsSet(int initialAmount){
+
+        int aux;
+        initialValues = new ArrayList<>();
+
+        for(int i = 0; i < initialAmount ; i++) {
+            do {
+                aux = (int) (Math.random() * Grid.SIZE * Grid.SIZE); //Numero entre 0 y 81
+            }while (belongsToMatrixBorders(aux));//Que no se encuentre en los bordes
+            initialValues.add(aux);
+        }
     }
 }
