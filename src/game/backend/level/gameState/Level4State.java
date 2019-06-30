@@ -21,4 +21,8 @@ public class Level4State extends GameState{
     public void subSecond(){
         time--;
     }
+
+    public void addTime(int bonusTime){
+        time += bonusTime;
+    }
 }

@@ -31,4 +31,6 @@ public abstract class Element {
     public boolean isExpirable(){
 		return false;
 	}
+
+	public boolean hasBonus(){return false;}
 }
