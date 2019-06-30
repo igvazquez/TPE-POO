@@ -8,6 +8,7 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     private int frequency;
     private int amount;
     private int lastMove;
+    private static int NUMBER = 20;
 
     public SpecialCandyGeneratorCell(Grid grid, int frequency, int amount) {
         super(grid);
@@ -24,7 +25,7 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     }
 
     private boolean validation(){
-        if(grid.getCurrentMoves() % frequency == 0 && grid.getCurrentMoves() != lastMove ) {
+        if(grid.getCurrentMoves() % frequency == 0 && grid.getCurrentMoves() != lastMove || lastMove == 0 && (int) (Math.random() * 50) == NUMBER) {
             lastMove = grid.getCurrentMoves();
             return grid.getCurrentMoves() / frequency <= amount;
         }

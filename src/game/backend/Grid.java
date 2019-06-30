@@ -2,11 +2,11 @@ package game.backend;
 
 import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
-import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Element;
 import game.backend.element.Wall;
+import game.backend.level.gameState.GameState;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
 
@@ -153,6 +153,10 @@ public abstract class Grid {
 		g[i1][j1].setContent(g[i2][j2].getContent());
 		g[i2][j2].setContent(e);
 		wasUpdated();
+	}
+
+	public GameState getGameState(){
+		return state;
 	}
 	
 	public GameState createState() {

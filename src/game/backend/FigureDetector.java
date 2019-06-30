@@ -35,7 +35,7 @@ public class FigureDetector {
 			int newI = i + cp.getI();
 			int newJ = j + cp.getJ();
 			//valida que no se salga del tablero
-			if (newI >= 0 && newI < Grid.SIZE && newJ >= 0 && newJ < Grid.SIZE) {
+			if (Grid.inBounds(newI,newJ)) {
 				if (curr.equals(grid.get(newI, newJ))) {
 					acum += cp.getValue();
 				}

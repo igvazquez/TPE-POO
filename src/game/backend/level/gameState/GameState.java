@@ -1,4 +1,4 @@
-package game.backend;
+package game.backend.level.gameState;
 
 public abstract class GameState {
 	
@@ -24,16 +24,4 @@ public abstract class GameState {
 	public abstract boolean gameOver();
 	
 	public abstract boolean playerWon();
-
-    public boolean hasExtraScoreInfo() {
-    	return false;
-    }
-
-	public String getExtraScoreMessage() {
-    	throw new IllegalArgumentException();
-	}
-
-	public String getExtraScoreValue() {
-		throw new IllegalArgumentException();
-	}
 }
