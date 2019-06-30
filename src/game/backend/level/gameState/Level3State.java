@@ -1,23 +1,21 @@
 package game.backend.level.gameState;
 
-import game.backend.GameState;
-
 public class Level3State extends GameState {
 
     private int requiredScore;
-    private Integer closestExpirationTime;
+    private Integer closestExpirationMove;
 
     public Level3State(int requiredScore) {
         this.requiredScore = requiredScore;
     }
 
-    public void setClosestExpirationTime(Integer time){
-        closestExpirationTime = time;
+    public void setClosestExpirationMove(Integer time){
+        closestExpirationMove = time;
     }
 
     @Override
     public boolean gameOver() {
-        return playerWon() || (closestExpirationTime != null && closestExpirationTime <= getMoves());
+        return playerWon() || (closestExpirationMove != null && closestExpirationMove <= getMoves());
     }
 
     @Override
@@ -26,8 +24,8 @@ public class Level3State extends GameState {
     }
 
     public Integer getMovementsLeft(){
-        if(closestExpirationTime != null)
-            return closestExpirationTime - getMoves();
+        if(closestExpirationMove != null)
+            return closestExpirationMove - getMoves();
         return null;
     }
 }

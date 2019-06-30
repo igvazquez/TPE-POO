@@ -1,10 +1,10 @@
 package game.frontend.gameInfo;
 
-import game.backend.GameState;
+import game.backend.level.gameState.GameState;
 
-public class GameInfoLevel1 extends GameInfo{
+public class Level1Info extends LevelInfo {
 
-    public GameInfoLevel1(GameState gameState) {
+    public Level1Info(GameState gameState) {
         super(gameState);
     }
 

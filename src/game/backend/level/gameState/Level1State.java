@@ -1,7 +1,5 @@
 package game.backend.level.gameState;
 
-import game.backend.GameState;
-
 public class Level1State extends GameState{
 
         private long requiredScore;

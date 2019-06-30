@@ -1,28 +1,28 @@
 package game.frontend.gameInfo;
 
-import game.backend.GameState;
+import game.backend.level.gameState.GameState;
 import game.backend.Grid;
 import game.backend.element.Element;
 
-public abstract class GameInfo {
+public abstract class LevelInfo {
     protected GameState gameState;
 
-    public GameInfo(GameState gameState) {
+    public LevelInfo(GameState gameState) {
         this.gameState = gameState;
     }
 
-    protected String auxBottomPanelInfo() {
+    protected String auxLevelStateInfo() {
         return "Score: " + gameState.getScore();
     }
 
-    public String bottomPanelInfo(){
+    public String levelStateInfo(){
         if(gameState.gameOver()) {
             if (gameState.playerWon())
                 return wonMessage();
             else
                 return lossMessage();
         }
-        return auxBottomPanelInfo();
+        return auxLevelStateInfo();
     }
 
     private String wonMessage(){
@@ -32,11 +32,11 @@ public abstract class GameInfo {
 
     public abstract String levelName();
 
-    public boolean hasCandyText(){
+   /*public boolean hasCandyText(){
         return false;
-    }
+    }*/
 
-    public String getCandyText(Element candy, Grid level){
+    public String getElementText(Element candy, Grid level){
             return null;
     }
 }

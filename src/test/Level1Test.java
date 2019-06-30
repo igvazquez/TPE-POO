@@ -1,8 +1,5 @@
 package test;
 
-import game.backend.GameState;
-import game.backend.Grid;
-import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.element.*;
 import game.backend.level.Level1;

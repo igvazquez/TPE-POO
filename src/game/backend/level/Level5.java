@@ -1,6 +1,6 @@
 package game.backend.level;
 
-import game.backend.GameState;
+import game.backend.level.gameState.GameState;
 import game.backend.Grid;
 import game.backend.cell.Cell;
 import game.backend.cell.ConditionalRemovalCell;
@@ -12,8 +12,8 @@ import game.backend.level.gameState.Level5State;
 import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid {
-    public static final int REQUIRED_UNCOMBINABLES = 5;
-    public static final int UNCOMBINABLE_FRECUENCY = 5;
+    public static final int REQUIRED_FRUITS = 5;
+    public static final int FRUIT_FREQUENCY = 5;
     public static final int MAX_MOVES = 70;
 
 
@@ -24,7 +24,7 @@ public class Level5 extends Grid {
 
     @Override
     protected GameState newState() {
-        return new Level5State(REQUIRED_UNCOMBINABLES, MAX_MOVES);
+        return new Level5State(REQUIRED_FRUITS, MAX_MOVES);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Level5 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, UNCOMBINABLE_FRECUENCY, REQUIRED_UNCOMBINABLES);
+        candyGenCell = new SpecialCandyGeneratorCell(this, FRUIT_FREQUENCY, REQUIRED_FRUITS);
     }
 
 }

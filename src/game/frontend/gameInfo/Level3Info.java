@@ -1,21 +1,21 @@
 package game.frontend.gameInfo;
 
-import game.backend.GameState;
+import game.backend.level.gameState.GameState;
 import game.backend.Grid;
 import game.backend.element.Element;
-import game.backend.element.TimeElement;
+import game.backend.element.ExpirableCandy;
 import game.backend.level.Level3;
 import game.backend.level.gameState.Level3State;
 
-public class GameInfoLevel3 extends GameInfo {
+public class Level3Info extends LevelInfo {
 
-    public GameInfoLevel3(GameState gameState) {
+    public Level3Info(GameState gameState) {
         super(gameState);
     }
 
     @Override
-    protected String auxBottomPanelInfo() {
-        return movementsLeft() + " - " + super.auxBottomPanelInfo();
+    protected String auxLevelStateInfo() {
+        return movementsLeft() + " - " + super.auxLevelStateInfo();
     }
 
     @Override
@@ -33,16 +33,16 @@ public class GameInfoLevel3 extends GameInfo {
         return message;
     }
 
-    @Override
+/*    @Override
     public boolean hasCandyText() {
         return true;
-    }
+    }*/
 
     @Override
-    public String getCandyText(Element candy, Grid level) {
+    public String getElementText(Element candy, Grid level) { //CAMBIAR METODO, NO RECIBE GRID.
         String candyText = null;
         if (((Level3)level).isElementExpirable(candy))
-            candyText = String.valueOf(((TimeElement)candy).getExpirationTime() - gameState.getMoves());
+            candyText = String.valueOf(((ExpirableCandy)candy).getExpirationMove() - gameState.getMoves());
 
         return candyText;
     }

@@ -25,7 +25,7 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     }
 
     private boolean validation(){
-        if(grid.getCurrentMoves() % frequency == 0 && grid.getCurrentMoves() != lastMove || lastMove == 0 && (int) ( Math.random() * 50) == NUMBER) {
+        if(grid.getCurrentMoves() % frequency == 0 && grid.getCurrentMoves() != lastMove || lastMove == 0 && (int) (Math.random() * 50) == NUMBER) {
             lastMove = grid.getCurrentMoves();
             return grid.getCurrentMoves() / frequency <= amount;
         }

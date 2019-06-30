@@ -1,4 +1,4 @@
-package game.backend;
+package game.backend.level.gameState;
 
 public abstract class GameState {
 	

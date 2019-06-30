@@ -1,6 +1,6 @@
 package game.backend.level;
 
-import game.backend.GameState;
+import game.backend.level.gameState.GameState;
 import game.backend.Grid;
 import game.backend.level.gameState.Level1State;
 

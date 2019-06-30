@@ -2,28 +2,22 @@ package game.frontend;
 
 import game.backend.CandyGame;
 import game.backend.GameListener;
-import game.backend.cell.Cell;
-import game.backend.element.Element;
 
-import game.frontend.gameInfo.GameInfo;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import game.frontend.gameInfo.LevelInfo;
 import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 public class CandyFrame extends VBox {
 
 	private static final int CELL_SIZE = 65;
 
 	private BoardPanel boardPanel;
-	private ScorePanel scorePanel;
+	private GameStateInfoPanel gameStateInfoPanel;
 	private ImageManager images;
 	private Point2D lastPoint;
 	private CandyGame game;
-	private GameInfo gameInfo;
+	private LevelInfo levelInfo;
 
 	public CandyFrame(CandyGame game, Levels levelEnum) {
 		this.game = game;
@@ -31,11 +25,11 @@ public class CandyFrame extends VBox {
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
-		scorePanel = new ScorePanel();
-		getChildren().add(scorePanel);
+		gameStateInfoPanel = new GameStateInfoPanel();
+		getChildren().add(gameStateInfoPanel);
 		game.initGame();
-		this.gameInfo = levelEnum.createGameInfo();
-		GameListener listener = new ScreenUpdater(images,boardPanel,game(), gameInfo);
+		this.levelInfo = levelEnum.createGameInfo();
+		GameListener listener = new ScreenUpdater(images,boardPanel,game(), levelInfo);
 		game.addGameListener(listener);
 
 		listener.gridUpdated();
@@ -49,7 +43,7 @@ public class CandyFrame extends VBox {
 				if (newPoint != null) {
 					System.out.println("Get second = " +  newPoint);
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
-					scorePanel.updateScore(gameInfo.bottomPanelInfo());
+					gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
 					lastPoint = null;
 				}
 			}

@@ -2,6 +2,7 @@ package game.backend;
 
 import game.backend.cell.Cell;
 import game.backend.element.Element;
+import game.backend.level.gameState.GameState;
 
 public class CandyGame implements GameListener {
 
@@ -38,13 +39,13 @@ public class CandyGame implements GameListener {
 		return state.getScore();
 	}
 
-	public boolean isFinished() {
+	/*public boolean isFinished() {
 		return state.gameOver();
-	}
+	}*/
 
-	public boolean playerWon() {
+	/*public boolean playerWon() {
 		return state.playerWon();
-	}
+	}*/
 
 	@Override
 	public void cellExplosion(Element e) {
@@ -58,5 +59,5 @@ public class CandyGame implements GameListener {
 
 	public Grid getGrid(){
 		return grid;
-	}
+	} //Creo que deberiamos matar este metodo
 }

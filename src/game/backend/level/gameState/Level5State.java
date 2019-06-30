@@ -1,7 +1,5 @@
 package game.backend.level.gameState;
 
-import game.backend.GameState;
-
 public class Level5State extends GameState {
 
     private int fruitsLeft, maxMoves;

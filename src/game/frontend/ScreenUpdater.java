@@ -3,9 +3,8 @@ package game.frontend;
 import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
-import game.backend.element.CandyColor;
 import game.backend.element.Element;
-import game.frontend.gameInfo.GameInfo;
+import game.frontend.gameInfo.LevelInfo;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
@@ -17,13 +16,13 @@ public class ScreenUpdater implements GameListener {
     private ImageManager images;
     private BoardPanel boardPanel;
     private CandyGame game;
-    private GameInfo gameInfo;
+    private LevelInfo levelInfo;
 
-    public ScreenUpdater(ImageManager images, BoardPanel boardPanel, CandyGame game, GameInfo gameInfo){
+    public ScreenUpdater(ImageManager images, BoardPanel boardPanel, CandyGame game, LevelInfo levelInfo){
         this.images = images;
         this.boardPanel = boardPanel;
         this.game = game;
-        this.gameInfo = gameInfo;
+        this.levelInfo = levelInfo;
     }
 
     @Override
@@ -39,7 +38,7 @@ public class ScreenUpdater implements GameListener {
                 Element element = cell.getContent();
                 Image image = images.getImage(element);
                 timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, gameInfo.getCandyText(element, game.getGrid()))));
+                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element, game.getGrid()))));
             }
             frameTime = frameTime.add(frameGap);
         }
