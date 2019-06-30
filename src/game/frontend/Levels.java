@@ -5,10 +5,7 @@ import game.backend.level.Level1;
 import game.backend.level.Level3;
 import game.backend.level.Level4;
 import game.backend.level.Level5;
-import game.frontend.gameInfo.LevelInfo;
-import game.frontend.gameInfo.Level1Info;
-import game.frontend.gameInfo.Level3Info;
-import game.frontend.gameInfo.Level5Info;
+import game.frontend.gameInfo.*;
 
 public enum Levels {
 
@@ -30,7 +27,7 @@ public enum Levels {
             return new Level3Info(getLevel().getGameState());
         }
     },
-    LEVEL4(Level4.class) {
+    LEVEL4(new Level4()) {
         @Override
         public LevelInfo createGameInfo() {
             return new Level4Info(getLevel().getGameState());

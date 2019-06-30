@@ -16,11 +16,6 @@ public class Level4Info extends LevelInfo{
     }
 
     @Override
-    public String levelStateInfo() {
-        return super.levelStateInfo();
-    }
-
-    @Override
     public String levelName() {
         return "Level 4";
     }

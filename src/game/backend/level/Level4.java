@@ -5,8 +5,7 @@ import game.backend.GameListener;
 import game.backend.Grid;
 import game.backend.cell.Cell;
 import game.backend.cell.SpecialCandyGeneratorCell;
-import game.backend.element.Element;
-import game.backend.element.TimeCandy;
+import game.backend.element.*;
 import game.backend.level.gameState.GameState;
 import game.backend.level.gameState.Level4State;
 
@@ -54,5 +53,20 @@ public class Level4 extends Grid {
         }
         ((Level4State)state()).addTime(bonus);
         super.cellExplosion(e);
+    }
+
+    @Override
+    public Element getSpecialLevelElement() {
+        int i = (int)(Math.random() * CandyColor.values().length);
+        int j = (int)(Math.random() * MoveLimits.values().length);
+
+        ExpirableCandy ans = new ExpirableCandy(CandyColor.values()[i], MoveLimits.values()[j].getValue(), state().getMoves());
+
+        if(expirablesTracker.containsKey(ans.getExpirationMove()))
+            expirablesTracker.put( ans.getExpirationMove(), expirablesTracker.get(ans.getExpirationMove()) + 1);
+        else
+            expirablesTracker.put( ans.getExpirationMove(), 1);
+
+        return ans;
     }
 }
