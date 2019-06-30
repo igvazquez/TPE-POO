@@ -58,15 +58,8 @@ public class Level4 extends Grid {
     @Override
     public Element getSpecialLevelElement() {
         int i = (int)(Math.random() * CandyColor.values().length);
-        int j = (int)(Math.random() * MoveLimits.values().length);
+        int j = (int)(Math.random() * BonusTimesEnum.values().length);
 
-        ExpirableCandy ans = new ExpirableCandy(CandyColor.values()[i], MoveLimits.values()[j].getValue(), state().getMoves());
-
-        if(expirablesTracker.containsKey(ans.getExpirationMove()))
-            expirablesTracker.put( ans.getExpirationMove(), expirablesTracker.get(ans.getExpirationMove()) + 1);
-        else
-            expirablesTracker.put( ans.getExpirationMove(), 1);
-
-        return ans;
+        return new TimeCandy(CandyColor.values()[i], BonusTimesEnum.values()[j].getValue());
     }
 }

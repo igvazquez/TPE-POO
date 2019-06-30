@@ -19,7 +19,7 @@ public class Level3 extends Grid {
     private static final int EXPIRABLE_CANDY_FREQUENCY = 3;
     private static final int MAX_EXPIRABLE_CANDY_AMOUNT = 10; //Que acepte negativos para significar "infinitos"
 
-    private SortedMap<Integer,Integer> expirablesTracker; //MODIFICAR PARA QUE LOS CANDY NO SEAN KEYS
+    private SortedMap<Integer,Integer> expirablesTracker;
 
     @Override
     public void initialize() {
@@ -42,7 +42,7 @@ public class Level3 extends Grid {
         Integer aux;
         if(e.isExpirable()) {
             aux = ((ExpirableCandy)e).getExpirationMove();
-            if (expirablesTracker.get(aux) <= 1) //ADAPTAR FUNCION PARA EL NUEVO MAP. Puede ser crear la interfaz expirable.
+            if (expirablesTracker.get(aux) <= 1)
                 expirablesTracker.remove(aux);
             else
                 expirablesTracker.put(aux, expirablesTracker.get(aux) - 1);
