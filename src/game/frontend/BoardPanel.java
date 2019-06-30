@@ -44,7 +44,7 @@ public class BoardPanel extends TilePane {
 			dropShadow.setColor(Color.ORANGERED);
 
 			Text text = new Text(overlappingText);
-			text.setFont(Font.font("Impact", FontWeight.BOLD, 40));
+			text.setFont(Font.font("Impact", FontWeight.BOLD, 29));
 			text.setFill(Color.BLACK);
 			text.setEffect(dropShadow);
 			cells[row][column].getChildren().add(text);
