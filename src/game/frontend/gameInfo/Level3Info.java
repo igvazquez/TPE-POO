@@ -41,11 +41,12 @@ public class Level3Info extends LevelInfo {
     @Override
     public String getElementText(Element candy, Grid level) { //CAMBIAR METODO, NO RECIBE GRID.
         String candyText = null;
-        if (((Level3)level).isElementExpirable(candy))
+        if (candy.isExpirable())
             candyText = String.valueOf(((ExpirableCandy)candy).getExpirationMove() - gameState.getMoves());
 
         return candyText;
     }
 }
+
 
 

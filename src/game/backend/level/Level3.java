@@ -53,7 +53,7 @@ public class Level3 extends Grid {
 
     private Integer getClosestExpirationTime(){
         if(!expirablesTracker.isEmpty())
-            return expirablesTracker.firstKey().getExpirationMove(); //ADAPTAR
+            return expirablesTracker.firstKey();
         return null;
     }
 
