@@ -1,5 +1,6 @@
 package game.frontend;
 
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.control.*;
 
@@ -7,7 +8,7 @@ import java.util.Optional;
 
 public class AppMenu extends MenuBar {
 
-    public AppMenu() {
+    public AppMenu(Application app) {
         Menu file = new Menu("Archivo");
         MenuItem exitMenuItem = new MenuItem("Salir");
         exitMenuItem.setOnAction(event -> {
@@ -22,7 +23,10 @@ public class AppMenu extends MenuBar {
                 }
             }
         });
+        MenuItem levelSelector = new MenuItem("Levels");
+        levelSelector.setOnAction(event -> ((GameApp)app).openLevelSelector());
         file.getItems().add(exitMenuItem);
+        file.getItems().add(levelSelector);
         Menu help = new Menu("Ayuda");
         MenuItem aboutMenuItem = new MenuItem("Acerca De");
         aboutMenuItem.setOnAction(event -> {

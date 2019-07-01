@@ -7,6 +7,7 @@ import game.frontend.gameInfo.LevelInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -28,9 +29,10 @@ public class CandyFrame extends VBox {
 	private CandyGame game;
 	private LevelInfo levelInfo;
 
-	public CandyFrame(CandyGame game, Levels levelEnum) {
+	public CandyFrame(CandyGame game, Levels levelEnum, Application app) {
 		this.game = game;
-		getChildren().add(new AppMenu());
+
+		getChildren().add(new AppMenu(app));
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);

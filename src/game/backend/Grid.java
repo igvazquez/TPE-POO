@@ -15,7 +15,7 @@ import java.util.*;
 
 public abstract class Grid {
 	
-	public static final int SIZE = 9;
+	public static final int SIZE = 11;
 
 	protected Cell[][] g = new Cell[SIZE][SIZE];
 	private Map<Cell, Point> gMap = new HashMap<>();
@@ -162,6 +162,10 @@ public abstract class Grid {
 	public GameState createState() {
 		this.state = newState();
 		return this.state;
+	}
+
+	public void finish(){
+		//
 	}
 	
 	public void addListener(GameListener listener) {
