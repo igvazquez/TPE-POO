@@ -54,7 +54,7 @@ public class BoardPanel extends TilePane {
 	public void setImage(int row, int column, Image image, Image overlappingImage, String overlappingText){
 		setImage(row, column, image, overlappingText);
 		if(overlappingImage != null){
-
+			setImage(row, column, overlappingImage);
 		}
 	}
 
