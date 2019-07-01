@@ -9,7 +9,7 @@ public class ConditionalRemovalCell extends Cell {
     }
 
     @Override
-    public boolean clearContent() {
+    public void clearContent() {
         if(grid.cellRemovalCriteria(this))
             return super.clearContent();
         return false;
