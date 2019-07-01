@@ -44,7 +44,7 @@ public class Cell {
 	
 	//Deja Nothing como contenido y realiza la explosion si es que tiene
 	public boolean clearContent() {
-		if (content.isMovable()) {
+		if (isMovable()) {
 			Direction[] explosionCascade = content.explode();
 			grid.cellExplosion(content);
 			this.content = new Nothing();
@@ -72,7 +72,7 @@ public class Cell {
 	}
 	
 	public Element getAndClearContent() {
-		if (content.isMovable()) {
+		if (isMovable()) {
 			Element ret = content;
 			this.content = new Nothing();
 			return ret;
