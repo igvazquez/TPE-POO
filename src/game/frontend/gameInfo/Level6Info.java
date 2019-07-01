@@ -1,6 +1,7 @@
 package game.frontend.gameInfo;
 
 import game.backend.level.gameState.GameState;
+import game.backend.level.gameState.SpecialItemState;
 
 public class Level6Info extends LevelInfo {
     public Level6Info(GameState gameState) {
@@ -9,7 +10,7 @@ public class Level6Info extends LevelInfo {
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Jails left: " + ((Level6State)gameState).getJails() + " " + super.auxLevelStateInfo();
+        return "Jails left: " + ((SpecialItemState)gameState).getSpecialItemLeft() + " " + super.auxLevelStateInfo();
     }
 
     @Override

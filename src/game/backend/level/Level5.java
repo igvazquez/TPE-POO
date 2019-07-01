@@ -8,7 +8,7 @@ import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.Element;
 import game.backend.element.Fruit;
 import game.backend.element.FruitType;
-import game.backend.level.gameState.Level5State;
+import game.backend.level.gameState.SpecialItemState;
 import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid {
@@ -26,7 +26,7 @@ public class Level5 extends Grid {
 
     @Override
     protected GameState newState() {
-        return new Level5State(REQUIRED_FRUITS, MAX_MOVES);
+        return new SpecialItemState(REQUIRED_FRUITS, MAX_MOVES);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Level5 extends Grid {
         for(int i = 0; i < SIZE; i++){
             if(!g()[SIZE-1][i].getContent().isCombinable()){
                 clearContent(SIZE-1, i);
-                ((Level5State)state()).addRemovedFruit();
+                ((SpecialItemState)state()).decrementSpecialItem();
                 flag = true;
             }
         }

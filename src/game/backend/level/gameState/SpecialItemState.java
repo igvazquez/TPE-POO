@@ -1,11 +1,11 @@
 package game.backend.level.gameState;
 
-public class Level5State extends GameState {
+public class SpecialItemState extends GameState {
 
-    private int fruitsLeft, maxMoves;
+    private int specialItemLeft, maxMoves;
 
-    public Level5State(int fruitsLeft, int maxMoves) {
-        this.fruitsLeft = fruitsLeft;
+    public SpecialItemState(int specialItemLeft, int maxMoves) {
+        this.specialItemLeft = specialItemLeft;
         this.maxMoves = maxMoves;
     }
 
@@ -16,11 +16,11 @@ public class Level5State extends GameState {
 
     @Override
     public boolean playerWon() {
-        return fruitsLeft <= 0;
+        return specialItemLeft <= 0;
     }
 
-    public void addRemovedFruit(){
-        fruitsLeft--;
+    public void decrementSpecialItem(){
+        specialItemLeft--;
     }
 
     public int getMovesLeft(){
@@ -31,7 +31,7 @@ public class Level5State extends GameState {
         return maxMoves;
     }
 
-    public int getFruitsLeft() {
-        return fruitsLeft;
+    public int getSpecialItemLeft() {
+        return specialItemLeft;
     }
 }

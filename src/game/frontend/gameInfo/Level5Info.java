@@ -1,7 +1,7 @@
 package game.frontend.gameInfo;
 
 import game.backend.level.gameState.GameState;
-import game.backend.level.gameState.Level5State;
+import game.backend.level.gameState.SpecialItemState;
 
 public class Level5Info extends LevelInfo {
 
@@ -20,10 +20,10 @@ public class Level5Info extends LevelInfo {
     }
 
     public String movementsLeft(){
-        return " Movements left: " + ((Level5State)gameState).getMovesLeft();
+        return " Movements left: " + ((SpecialItemState)gameState).getMovesLeft();
     }
 
     public String fruitsLeft(){
-        return " Fruits left: " + ((Level5State)gameState).getFruitsLeft();
+        return " Fruits left: " + ((SpecialItemState)gameState).getSpecialItemLeft();
     }
 }
