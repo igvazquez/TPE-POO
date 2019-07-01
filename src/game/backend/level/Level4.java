@@ -7,6 +7,7 @@ import game.backend.cell.Cell;
 import game.backend.cell.SpecialCandyGeneratorCell;
 import game.backend.element.*;
 import game.backend.level.gameState.GameState;
+import game.backend.level.gameState.Level3State;
 import game.backend.level.gameState.Level4State;
 
 import java.util.Timer;
@@ -16,22 +17,20 @@ public class Level4 extends Grid {
 
     private static final int SECOND = 1000;
     private static final int TIMER_DELAY = SECOND/2;
-    private static final int INITIAL_TIME = 120*SECOND;
-    private static final int FREQUENCY = 120*SECOND;
-    private static final int AMOUNT = 120*SECOND;
-
-
-    private Timer timer;
+    private static final int INITIAL_TIME = 120;
+    private static final int FREQUENCY = 1;
+    private static final int INITIAL_AMOUNT = 3;
+    private static final int REQUIRED_SCORE = 12000;
 
     @Override
     protected GameState newState() {
-        return new Level4State(INITIAL_TIME);
+        return new Level4State(INITIAL_TIME, REQUIRED_SCORE);
     }
 
     @Override
     public void initialize() {
         super.initialize();
-        timer = new Timer();
+        Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -42,7 +41,7 @@ public class Level4 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, FREQUENCY, AMOUNT);
+        candyGenCell = new SpecialCandyGeneratorCell(this, FREQUENCY, SpecialCandyGeneratorCell.UNLIMITED_AMOUNT_KEY, INITIAL_AMOUNT);
     }
 
     @Override
@@ -57,16 +56,18 @@ public class Level4 extends Grid {
 
     @Override
     public Element getSpecialLevelElement() {
+
         int i = (int)(Math.random() * CandyColor.values().length);
-        int j = (int)(Math.random() * MoveLimits.values().length);
+        int j = (int)(Math.random() * BonusTimesEnum.values().length);
 
-        ExpirableCandy ans = new ExpirableCandy(CandyColor.values()[i], MoveLimits.values()[j].getValue(), state().getMoves());
+        return new TimeCandy(CandyColor.values()[i], BonusTimesEnum.values()[j].getValue());
+    }
 
-        if(expirablesTracker.containsKey(ans.getExpirationMove()))
-            expirablesTracker.put( ans.getExpirationMove(), expirablesTracker.get(ans.getExpirationMove()) + 1);
-        else
-            expirablesTracker.put( ans.getExpirationMove(), 1);
-
-        return ans;
+    @Override
+    public boolean tryMove(int i1, int j1, int i2, int j2) {
+        boolean rta;
+        if(rta = super.tryMove(i1, j1, i2, j2))
+            state().addMove();
+        return rta;
     }
 }

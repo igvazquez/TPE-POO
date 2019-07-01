@@ -12,9 +12,11 @@ import game.backend.level.gameState.Level5State;
 import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid {
-    public static final int REQUIRED_FRUITS = 5;
-    public static final int FRUIT_FREQUENCY = 5;
+
+    public static final int REQUIRED_FRUITS = 10;
+    public static final int FRUIT_FREQUENCY = 2;
     public static final int MAX_MOVES = 70;
+    private static final int INITIAL_AMOUNT = 3;
 
 
     @Override
@@ -33,18 +35,27 @@ public class Level5 extends Grid {
     }
 
     @Override
+    public void initialize() {
+        super.initialize();
+        while (fruitRemoval());
+    }
+
+    @Override
     protected void setMoveMaker() {
         moveMaker = new MoveMakerWithFruits(this);
     }
 
-    private void fruitRemoval(){
+    private boolean fruitRemoval(){
+        boolean flag = false;
         for(int i = 0; i < SIZE; i++){
             if(!g()[SIZE-1][i].getContent().isCombinable()){
                 clearContent(SIZE-1, i);
                 ((Level5State)state()).addRemovedFruit();
+                flag = true;
             }
         }
         fallElements();
+        return flag;
     }
 
     @Override
@@ -52,7 +63,7 @@ public class Level5 extends Grid {
         boolean ret;
         if (ret = super.tryMove(i1, j1, i2, j2)) {
             state().addMove();
-            fruitRemoval();
+            while (fruitRemoval());
         }
         return ret;
     }
@@ -65,7 +76,7 @@ public class Level5 extends Grid {
 
     @Override
     protected void setCandyCellGenerator() {
-        candyGenCell = new SpecialCandyGeneratorCell(this, FRUIT_FREQUENCY, REQUIRED_FRUITS);
+        candyGenCell = new SpecialCandyGeneratorCell(this, FRUIT_FREQUENCY, REQUIRED_FRUITS, INITIAL_AMOUNT);
     }
 
 }
