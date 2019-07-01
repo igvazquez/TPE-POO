@@ -6,6 +6,10 @@ import game.backend.element.Nothing;
 public class JailCell extends Cell {
     private boolean unlocked;
 
+    public static String getKey(){
+        return "JAILCELL";
+    }
+
     public JailCell(Grid grid) {
         super(grid);
         unlocked = false;

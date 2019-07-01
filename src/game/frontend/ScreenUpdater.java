@@ -37,8 +37,15 @@ public class ScreenUpdater implements GameListener {
                 Cell cell = game.get(i, j);
                 Element element = cell.getContent();
                 Image image = images.getImage(element);
+
+                Image auxOverlappingImage = null;
+                if(levelInfo.hasOverlappingImage(cell))
+                    auxOverlappingImage = images.getImage(cell);
+
+                Image overlappingImage = auxOverlappingImage;
+
                 timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element))));
+                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, overlappingImage, levelInfo.getElementText(element))));
             }
             frameTime = frameTime.add(frameGap);
         }

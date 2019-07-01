@@ -6,6 +6,10 @@ import game.backend.element.Nothing;
 import game.backend.move.Direction;
 
 public class Cell {
+
+	public static String getKey(){
+		return "CELL";
+	}
 	
 	protected Grid grid;
 	protected Cell[] around = new Cell[Direction.values().length];
@@ -31,7 +35,7 @@ public class Cell {
 	public boolean isMovable(){
 		return content.isMovable();
 	}
-	public boolean isLocked(){ return !isMovable() && !isEmpty() && isCombinable();}
+
 	public boolean isEmpty() {
 		return !content.isSolid();
 	}

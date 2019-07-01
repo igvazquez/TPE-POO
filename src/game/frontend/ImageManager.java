@@ -1,5 +1,7 @@
 package game.frontend;
 
+import game.backend.cell.Cell;
+import game.backend.cell.JailCell;
 import game.backend.element.*;
 import javafx.scene.image.Image;
 
@@ -18,6 +20,8 @@ public class ImageManager {
 		VerticalStripedCandy vc = new VerticalStripedCandy();
 		HorizontalStripedCandy hc = new HorizontalStripedCandy();
 		images = new HashMap<>();
+
+		//Imagenes del content
 		//Agrega 3 imagenes independientes de color
 		images.put(new Nothing().getKey(), new Image(IMAGE_PATH + "nothing.png"));
 		images.put(new Bomb().getKey(),  new Image(IMAGE_PATH + "bomb.png"));
@@ -44,11 +48,22 @@ public class ImageManager {
 			images.put(hc.getFullKey(),  new Image(IMAGE_PATH + cc.toString().toLowerCase() + "HStripped.png"));
 		}
 
-
+		//Imagenes de cell
+		images.put(JailCell.getKey(),new Image(IMAGE_PATH + "jail.png"));
 	}
 
 	public Image getImage(Element e) {
-		return images.get(e.getFullKey());
+		String key = e.getFullKey();
+		if(images.containsKey(key))
+			return images.get(key);
+		return null;
+	}
+
+	public Image getImage(Cell cell){
+		String key = cell.getKey();
+		if(images.containsKey(key))
+			return images.get(key);
+		return null;
 	}
 
 }
