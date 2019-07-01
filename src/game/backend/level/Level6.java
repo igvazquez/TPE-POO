@@ -32,4 +32,10 @@ public class Level6 extends Grid {
         return  new SpecialItemState(jails, MAX_MOVES);
     }
 
+    @Override
+    public void cellExplosion(Element e) {
+        if(!e.isSolid())
+            ((SpecialItemState)state()).decrementSpecialItem();
+        super.cellExplosion(e);
+    }
 }
