@@ -4,8 +4,9 @@ import game.backend.Grid;
 
 public class ConditionalRemovalCell extends Cell {
 
-    public static String getKey(){
-        return "CONDCELL";
+    @Override
+    public String getKey(){
+        return "COND" + super.getKey();
     }
 
     public ConditionalRemovalCell(Grid grid) {

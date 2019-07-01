@@ -23,7 +23,7 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	protected MoveMaker moveMaker;
 	protected FigureDetector figureDetector;
-	private Cell wallCell;
+	protected Cell wallCell;
 	protected Cell candyGenCell;
 	
 	protected abstract GameState newState();

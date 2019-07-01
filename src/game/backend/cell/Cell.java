@@ -6,10 +6,6 @@ import game.backend.element.Nothing;
 import game.backend.move.Direction;
 
 public class Cell {
-
-	public static String getKey(){
-		return "CELL";
-	}
 	
 	protected Grid grid;
 	protected Cell[] around = new Cell[Direction.values().length];
@@ -19,6 +15,8 @@ public class Cell {
 		this.grid = grid;
 		this.content = new Nothing();
 	}
+
+	public Cell(){}
 	
 	public void setAround(Cell up, Cell down, Cell left, Cell right) {
 		this.around[Direction.UP.ordinal()] = up;
@@ -44,6 +42,10 @@ public class Cell {
 
 	public Element getContent() {
 		return content;
+	}
+
+	public String getKey(){
+		return "CELL";
 	}
 	
 	//Deja Nothing como contenido y realiza la explosion si es que tiene

@@ -1,5 +1,6 @@
 package game.backend;
 
+import game.backend.cell.JailCell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Element;

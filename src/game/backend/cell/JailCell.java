@@ -6,8 +6,8 @@ import game.backend.element.Nothing;
 public class JailCell extends Cell {
     private boolean unlocked;
 
-    public static String getKey(){
-        return "JAILCELL";
+    public String getKey(){
+        return "JAIL" + super.getKey();
     }
 
     public JailCell(Grid grid) {
@@ -15,11 +15,15 @@ public class JailCell extends Cell {
         unlocked = false;
     }
 
+    public JailCell(){}
+
     @Override
     public void clearContent() {
         if (!isMovable()) {
             unlocked = true;
             grid.cellExplosion(new Nothing());
+            grid.fallElements();
+            grid.tryRemove(this);
         }
         else
             super.clearContent();

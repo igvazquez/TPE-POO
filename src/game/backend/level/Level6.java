@@ -17,13 +17,23 @@ public class Level6 extends Grid {
     }
 
     public int setJails() {
-        for (int k = 0; k < SIZE; k++)
-            if (k != 5) {
+        int row = SIZE / 2;
+        for (int k = 0; k < SIZE; k++) {
+            if (k != SIZE / 2) {
                 Element aux = g[5][k].getContent();
-                g[5][k] = new JailCell(this);
-                g[5][k].setContent(aux);
+                g[row][k] = new JailCell(this);
+                g[row][k].setContent(aux);
+
+                if (k == 0)
+                    g[row][k].setAround(g[row - 1][k], g[row + 1][k], wallCell, g[row][k + 1]);
+                else if (k == SIZE - 1)
+                    g[row][k].setAround(g[row - 1][k], g[row + 1][k], g[row][k - 1], wallCell);
+                else
+                    g[row][k].setAround(g[row - 1][k], g[row + 1][k], g[row][k - 1], g[row][k + 1]);
+
                 jails++;
             }
+        }
         return jails;
     }
 

@@ -49,7 +49,7 @@ public class ImageManager {
 		}
 
 		//Imagenes de cell
-		images.put(JailCell.getKey(),new Image(IMAGE_PATH + "jail.png"));
+		images.put(new JailCell().getKey(), new Image(IMAGE_PATH + "jail.png"));
 	}
 
 	public Image getImage(Element e) {
