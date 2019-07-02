@@ -13,8 +13,8 @@ public class GameApp extends Application {
 		launch(args);
 	}
 
-	Stage primaryStage;
-	CandyGame game;
+	private Stage primaryStage;
+	private CandyGame game;
 
 	@Override
 	public void start(Stage primaryStage) {

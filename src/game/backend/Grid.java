@@ -134,7 +134,6 @@ public abstract class Grid {
 		return null;
 	}
 
-
 	/*Igual que en figure detector, y hay casos donde falla. Lo cambiamos por
 	el mismo metodo de figureDetector que lo hace bien.
 
@@ -242,4 +241,7 @@ public abstract class Grid {
 		return i>= 0 && i <= SIZE -1 && j>= 0 && j <= SIZE -1;
 	}
 
+	public void finish(){
+		//
+	}
 }
