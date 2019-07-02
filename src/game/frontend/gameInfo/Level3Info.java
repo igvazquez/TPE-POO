@@ -33,11 +33,6 @@ public class Level3Info extends LevelInfo {
         return message;
     }
 
-/*    @Override
-    public boolean hasCandyText() {
-        return true;
-    }*/
-
     @Override
     public String getElementText(Element element) { //CAMBIAR METODO, NO RECIBE GRID.
         String candyText = null;
