@@ -97,7 +97,7 @@ public class Cell {
 				Cell down = around[Direction.DOWN.ordinal()];
 				return down.fallUpperContent();
 			}
-		} 
+		}
 		return false;
 	}
 	

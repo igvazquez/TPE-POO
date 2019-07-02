@@ -19,11 +19,9 @@ public class JailCell extends Cell {
 
     @Override
     public void clearContent() {
-        if (!isMovable()) {
+        if (!unlocked) {
             unlocked = true;
             grid.cellExplosion(new Nothing());
-            grid.fallElements();
-            grid.tryRemove(this);
         }
         else
             super.clearContent();

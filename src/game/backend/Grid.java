@@ -134,7 +134,6 @@ public abstract class Grid {
 		return null;
 	}
 
-
 	//Igual que en figure detector
 	private void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
