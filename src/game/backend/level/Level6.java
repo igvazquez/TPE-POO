@@ -18,17 +18,18 @@ public class Level6 extends Grid {
         jails = setJails();
         g[5][0].setContent(new Candy(CandyColor.RED));
         g[5][1].setContent(new Candy(CandyColor.RED));
-        //g[5][3].setContent(new Candy(CandyColor.RED));
+        g[5][3].setContent(new Candy(CandyColor.RED));
         g[2][2].setContent(new Candy(CandyColor.RED));
         g[4][2].setContent(new Candy(CandyColor.BLUE));
         g[3][3].setContent(new Candy(CandyColor.BLUE));
         g[5][2].setContent(new Candy(CandyColor.BLUE));
         g[6][2].setContent(new Candy(CandyColor.GREEN));
         g[6][3].setContent(new Candy(CandyColor.GREEN));
-        g[7][1].setContent(new Candy(CandyColor.GREEN));
-        g[5][4].setContent(new Candy(CandyColor.GREEN));
-        g[4][5].setContent(new Candy(CandyColor.GREEN));
-        g[5][6].setContent(new Candy(CandyColor.GREEN));
+        g[7][4].setContent(new Candy(CandyColor.GREEN));
+        //g[5][3].setContent(new Candy(CandyColor.GREEN));
+        //g[5][4].setContent(new Candy(CandyColor.GREEN));
+       // g[4][5].setContent(new Candy(CandyColor.GREEN));
+        //g[5][6].setContent(new Candy(CandyColor.GREEN));
 
     }
 
@@ -43,8 +44,6 @@ public class Level6 extends Grid {
         }
 
         for (int k = 0; k < SIZE; k++) {
-            if (k != SIZE / 2) {
-
                 int i = row;
                 if (k == 0)
                     g[i][k].setAround(g[i - 1][k], g[i + 1][k], wallCell, g[i][k + 1]);
@@ -65,13 +64,15 @@ public class Level6 extends Grid {
 
                 jails++;
             }
-        }
         return jails;
     }
 
     @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         if(g()[i1][j1].isMovable() && g()[i2][j2].isMovable() && super.tryMove(i1, j1, i2, j2) ) {
+            tryRemove(g()[i1][j1]);
+            tryRemove(g()[i2][j2]);
+            fallElements();
             wasUpdated();
             return true;
             }

@@ -127,7 +127,7 @@ public abstract class Grid {
 			Point p = gMap.get(cell);
 			Figure f = figureDetector.checkFigure(p.x, p.y);
 			if (f != null) {
-				removeFigure(p.x, p.y, f);
+				figureDetector.removeFigure(p.x, p.y, f);
 			}
 			return f;
 		}
