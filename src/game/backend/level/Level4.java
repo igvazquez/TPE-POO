@@ -22,6 +22,9 @@ public class Level4 extends Grid {
     private static final int INITIAL_AMOUNT = 3;
     private static final int REQUIRED_SCORE = 12000;
 
+    private Timer timer;
+    private TimerTask task;
+
     @Override
     protected GameState newState() {
         return new Level4State(INITIAL_TIME, REQUIRED_SCORE);
@@ -30,13 +33,14 @@ public class Level4 extends Grid {
     @Override
     public void initialize() {
         super.initialize();
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+        timer = new Timer();
+        task = new TimerTask() {
             @Override
             public void run() {
                 ((Level4State)state()).subSecond();
             }
-        }, TIMER_DELAY, SECOND);
+        };
+        timer.scheduleAtFixedRate(task, TIMER_DELAY, SECOND);
     }
 
     @Override
@@ -69,5 +73,13 @@ public class Level4 extends Grid {
         if(rta = super.tryMove(i1, j1, i2, j2))
             state().addMove();
         return rta;
+    }
+
+    @Override
+    public void finish() {
+        if(timer != null)
+            timer.cancel();
+        if(task != null)
+            task.cancel();
     }
 }
