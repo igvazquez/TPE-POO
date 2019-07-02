@@ -24,9 +24,9 @@ public class MainMenu extends VBox {
         for(Levels level : Levels.values()){
             Button button = new Button();
             button.setText(level.name());
-            button.setOpacity(0.5);
+            button.setOpacity(0.7);
             button.setOnMouseEntered(e->button.setOpacity(0.9));
-            button.setOnMouseExited(e->button.setOpacity(0.5));
+            button.setOnMouseExited(e->button.setOpacity(0.7));
             button.setPrefWidth(200);
             button.setFont(Font.font("Roboto", FontWeight.BOLD, 24));
             button.setOnMouseClicked((event -> ((GameApp)app).startLevel(level)));
