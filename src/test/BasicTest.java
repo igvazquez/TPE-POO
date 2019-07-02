@@ -24,7 +24,7 @@ public class BasicTest extends Application{
     public void start(Stage primaryStage) {
         Levels levelEnum = Levels.LEVEL1; //Aca se elige el nivel.
         CandyGame game = new CandyGame(levelEnum.getLevel());
-        CandyFrame frame = new CandyFrame(game, levelEnum);
+        CandyFrame frame = new CandyFrame(game, levelEnum, this);
         Scene scene = new Scene(frame);
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

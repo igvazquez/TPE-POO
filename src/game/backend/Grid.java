@@ -239,4 +239,8 @@ public abstract class Grid {
 	public static boolean inBounds(int i, int j){
 		return i>= 0 && i <= SIZE -1 && j>= 0 && j <= SIZE -1;
 	}
+
+	public void finish() {
+		//
+	}
 }

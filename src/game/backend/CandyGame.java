@@ -57,6 +57,10 @@ public class CandyGame implements GameListener {
 		//
 	}
 
+	public void finish(){
+		grid.finish();
+	}
+
 	public Grid getGrid(){
 		return grid;
 	} //Creo que deberiamos matar este metodo

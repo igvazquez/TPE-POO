@@ -13,15 +13,36 @@ public class GameApp extends Application {
 		launch(args);
 	}
 
+	Stage primaryStage;
+	CandyGame game;
+
 	@Override
 	public void start(Stage primaryStage) {
-		Levels levelEnum = Levels.LEVEL4; //Aca se elige el nivel.
-		CandyGame game = new CandyGame(levelEnum.getLevel());
-		CandyFrame frame = new CandyFrame(game, levelEnum);
+		this.primaryStage = primaryStage;
+		primaryStage.setResizable(false);
+		openLevelSelector();
+	}
+
+	public void startLevel(Levels level){
+		primaryStage.close();
+		game = new CandyGame(level.getLevel());
+		CandyFrame frame = new CandyFrame(game, level,this);
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);
+		primaryStage.setTitle(level.name());
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	public void openLevelSelector(){
+		primaryStage.close();
+		if(game!=null)
+			game.finish();
+		Scene scene = new Scene(new MainMenu(this));
+		primaryStage.setTitle("Level Selector");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
 	}
 
 }
