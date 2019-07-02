@@ -15,11 +15,6 @@ public class Level5Info extends MovementDependantLevelInfo {
         return  fruitsLeft()  + " - " + super.auxLevelStateInfo();
     }
 
-    @Override
-    public String levelName() {
-        return "Level 5";
-    }
-
     public String fruitsLeft(){
         return " Fruits left: " + ((Level5State)gameState).getFruitsLeft();
     }

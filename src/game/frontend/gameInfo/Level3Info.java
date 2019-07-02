@@ -18,11 +18,6 @@ public class Level3Info extends LevelInfo {
         return movementsLeft() + " - " + super.auxLevelStateInfo();
     }
 
-    @Override
-    public String levelName() {
-        return "Level 3";
-    }
-
     private String movementsLeft() {
         Integer movsLeft = ((Level3State) gameState).getMovementsLeft();
         String message = "Moves left: ";

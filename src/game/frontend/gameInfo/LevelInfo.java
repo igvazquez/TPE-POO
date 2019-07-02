@@ -36,8 +36,6 @@ public abstract class LevelInfo {
         throw new IllegalStateException();
     }
 
-    public abstract String levelName();
-
     public String getElementText(Element element){
             return null;
     }

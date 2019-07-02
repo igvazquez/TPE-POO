@@ -16,10 +16,6 @@ public class Level2Info extends MovementDependantLevelInfo{
         return "Cells remaining: " + ((Level2State)gameState).getOffCells() + " - " + super.auxLevelStateInfo();
     }
 
-    @Override
-    public String levelName() {
-        return "Level2";
-    }
 
     @Override
     public boolean areCellsLightable() {

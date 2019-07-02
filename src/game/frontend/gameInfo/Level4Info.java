@@ -18,10 +18,6 @@ public class Level4Info extends LevelInfo {
         return "Time Left: " + ((Level4State)gameState).getTime() + " " + super.auxLevelStateInfo();
     }
 
-    @Override
-    public String levelName() {
-        return "Level 4";
-    }
 
     @Override
     public String getElementText(Element element) {
