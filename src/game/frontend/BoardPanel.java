@@ -1,6 +1,8 @@
 package game.frontend;
 
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -51,4 +53,13 @@ public class BoardPanel extends TilePane {
 		}
 	}
 
+    public void setLightedImage(int row, int column, Image image, String overlappingText) {
+		setImage(row, column, image, overlappingText);
+
+		Light.Distant spotLight = new Light.Distant();
+		spotLight.setColor(Color.YELLOW);
+		spotLight.setElevation(100);
+		Lighting lighting = new Lighting(spotLight);
+		cells[row][column].setEffect(lighting);
+    }
 }

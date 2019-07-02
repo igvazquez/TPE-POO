@@ -33,4 +33,5 @@ public abstract class Element {
 	}
 
 	public boolean hasBonus(){return false;}
+
 }

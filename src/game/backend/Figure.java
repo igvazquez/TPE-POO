@@ -90,5 +90,5 @@ public enum Figure {
 		} catch(Exception e) {
 		}
 		return null;
-	}	
+	}
 }

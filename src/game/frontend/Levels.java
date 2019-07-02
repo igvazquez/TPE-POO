@@ -1,10 +1,7 @@
 package game.frontend;
 
 import game.backend.Grid;
-import game.backend.level.Level1;
-import game.backend.level.Level3;
-import game.backend.level.Level4;
-import game.backend.level.Level5;
+import game.backend.level.*;
 import game.frontend.gameInfo.*;
 
 public enum Levels {
@@ -15,12 +12,12 @@ public enum Levels {
             return new Level1Info(getLevel().getGameState());
         }
     },
-    //LEVEL2(Level2.class){
-    //    @Override
-    //    public LevelInfo createGameInfo(){
-    //        return new Level2Info(getLevel().getGameState());
-    //  }
-    //}
+    LEVEL2(new Level2()){
+        @Override
+        public LevelInfo createGameInfo(){
+            return new Level2Info(getLevel().getGameState());
+      }
+    },
     LEVEL3(new Level3()){
         @Override
         public LevelInfo createGameInfo(){

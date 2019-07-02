@@ -3,6 +3,7 @@ package game.frontend;
 import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
+import game.backend.cell.LightableCell;
 import game.backend.element.Element;
 import game.frontend.gameInfo.LevelInfo;
 import javafx.animation.KeyFrame;
@@ -37,9 +38,18 @@ public class ScreenUpdater implements GameListener {
                 Cell cell = game.get(i, j);
                 Element element = cell.getContent();
                 Image image = images.getImage(element);
+
                 timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element))));
-            }
+
+                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> {
+
+                if(levelInfo.areCellsLightable() && ((LightableCell)cell).isLighted())
+                    boardPanel.setLightedImage(finalI, finalJ, image, levelInfo.getElementText(element));
+                else
+                    boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element));
+                    }));
+                }
+
             frameTime = frameTime.add(frameGap);
         }
         timeLine.play();

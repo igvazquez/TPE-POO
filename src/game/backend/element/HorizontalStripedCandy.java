@@ -31,4 +31,5 @@ public class HorizontalStripedCandy extends Candy {
 		return 80;
 	}
 
+
 }
