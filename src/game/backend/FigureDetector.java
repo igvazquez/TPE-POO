@@ -48,6 +48,7 @@ public class FigureDetector {
 	//el de remplazo si es que existe
 	public void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)grid.get(i, j)).getColor();
+		grid.onFigureRemoval(i,j,f);
 		grid.clearContent(i, j);
 		if (f.hasReplacement()) {
 			grid.setContent(i, j, f.generateReplacement(color));

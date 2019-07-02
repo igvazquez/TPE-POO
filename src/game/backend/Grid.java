@@ -127,7 +127,7 @@ public abstract class Grid {
 			Point p = gMap.get(cell);
 			Figure f = figureDetector.checkFigure(p.x, p.y);
 			if (f != null) {
-				removeFigure(p.x, p.y, f);
+				figureDetector.removeFigure(p.x, p.y, f); //cambiamos para que llame al metodo correcto
 			}
 			return f;
 		}
@@ -135,7 +135,9 @@ public abstract class Grid {
 	}
 
 
-	//Igual que en figure detector
+	/*Igual que en figure detector, y hay casos donde falla. Lo cambiamos por
+	el mismo metodo de figureDetector que lo hace bien.
+
 	private void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
 		if (f.hasReplacement()) {
@@ -146,7 +148,7 @@ public abstract class Grid {
 		for (Point p: f.getPoints()) {
 			clearContent(i + p.x, j + p.y);
 		}
-	}
+	}*/
 
 	public void swapContent(int i1, int j1, int i2, int j2) {
 		Element e = g[i1][j1].getContent();
@@ -239,4 +241,6 @@ public abstract class Grid {
 	public static boolean inBounds(int i, int j){
 		return i>= 0 && i <= SIZE -1 && j>= 0 && j <= SIZE -1;
 	}
+
+	public void onFigureRemoval(int i, int j, Figure f){}
 }
