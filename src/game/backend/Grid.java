@@ -242,5 +242,4 @@ public abstract class Grid {
 		return i>= 0 && i <= SIZE -1 && j>= 0 && j <= SIZE -1;
 	}
 
-	public void onFigureRemoval(int i, int j, Figure f){}
 }

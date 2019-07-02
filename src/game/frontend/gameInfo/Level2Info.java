@@ -25,6 +25,6 @@ public class Level2Info extends LevelInfo{
         return true;
     }
     public String movementsLeft(){
-        return " Movements left: " + ((Level2State)gameState).getMovesLeft();
+        return " Movs. left: " + ((Level2State)gameState).getMovesLeft();
     }
 }

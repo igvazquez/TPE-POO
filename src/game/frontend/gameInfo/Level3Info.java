@@ -25,7 +25,7 @@ public class Level3Info extends LevelInfo {
 
     private String movementsLeft() {
         Integer movsLeft = ((Level3State) gameState).getMovementsLeft();
-        String message = "Movements left: ";
+        String message = "Movs. left: ";
         if(movsLeft != null)
             message += movsLeft;
         else
