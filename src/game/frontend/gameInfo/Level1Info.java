@@ -17,6 +17,10 @@ public class Level1Info extends LevelInfo {
 
     @Override
     protected String auxLevelStateInfo() {
-        return  "Moves Left: " + ((MovementDependantState)gameState).getMovesLeft() + " " + super.auxLevelStateInfo();
+        return  "Moves Left: " + movementsLeft() + " " + super.auxLevelStateInfo();
+    }
+
+    public String movementsLeft(){
+        return " Movs. left: " + ((MovementDependantState)gameState).getMovesLeft();
     }
 }
