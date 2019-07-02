@@ -20,8 +20,12 @@ public abstract class GameState {
 	public int getMoves() {
 		return moves;
 	}
-	
-	public abstract boolean gameOver();
-	
+
+	public abstract boolean playerLost();
+
 	public abstract boolean playerWon();
+
+	public  boolean gameOver(){ return playerWon() || playerLost();}
+	
+
 }

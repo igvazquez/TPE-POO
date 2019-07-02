@@ -31,8 +31,5 @@ public class HorizontalStripedCandy extends Candy {
 		return 80;
 	}
 
-	@Override
-	public boolean hasEffect() {
-		return true;
-	}
+
 }

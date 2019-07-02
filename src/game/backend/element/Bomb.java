@@ -16,9 +16,4 @@ public class Bomb extends Element {
 	public long getScore() {
 		return 200;
 	}
-
-	@Override
-	public boolean hasEffect() {
-		return true;
-	}
 }

@@ -1,8 +1,8 @@
 package game.backend.level.gameState;
 
-public class Level3State extends GameState {
+public class Level3State extends ScoreDependantState {
 
-    private int requiredScore;
+
     private Integer closestExpirationMove;
 
     public Level3State(int requiredScore) {
@@ -14,13 +14,8 @@ public class Level3State extends GameState {
     }
 
     @Override
-    public boolean gameOver() {
-        return playerWon() || (closestExpirationMove != null && closestExpirationMove <= getMoves());
-    }
-
-    @Override
-    public boolean playerWon() {
-        return requiredScore <= getScore();
+    public boolean playerLost() {
+        return closestExpirationMove != null && closestExpirationMove <= getMoves();
     }
 
     public Integer getMovementsLeft(){

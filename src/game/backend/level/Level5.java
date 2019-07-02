@@ -50,7 +50,7 @@ public class Level5 extends Grid {
         for(int i = 0; i < SIZE; i++){
             if(!g()[SIZE-1][i].getContent().isCombinable()){
                 clearContent(SIZE-1, i);
-                ((Level5State)state()).addRemovedFruit();
+                ((Level5State)state()).RemoveFruit();
                 flag = true;
             }
         }

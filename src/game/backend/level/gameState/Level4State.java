@@ -1,9 +1,8 @@
 package game.backend.level.gameState;
 
-public class Level4State extends GameState{
+public class Level4State extends ScoreDependantState{
 
     private int time; //Seconds
-    private int requiredScore;
 
     public Level4State(int initTime, int requiredScore) {
         time = initTime;
@@ -11,13 +10,8 @@ public class Level4State extends GameState{
     }
 
     @Override
-    public boolean gameOver() {
+    public boolean playerLost() {
         return time <= 0;
-    }
-
-    @Override
-    public boolean playerWon() {
-        return getScore() >= requiredScore;
     }
 
     public void subSecond(){

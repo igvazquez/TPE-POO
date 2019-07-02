@@ -33,9 +33,4 @@ public class WrappedCandy extends Candy {
 	public long getScore() {
 		return 60;
 	}
-
-	@Override
-	public boolean hasEffect() {
-		return true;
-	}
 }

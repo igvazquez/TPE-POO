@@ -34,7 +34,4 @@ public abstract class Element {
 
 	public boolean hasBonus(){return false;}
 
-	public boolean hasEffect(){
-		return false;
-	}
 }
