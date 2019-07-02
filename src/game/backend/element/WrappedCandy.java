@@ -34,4 +34,8 @@ public class WrappedCandy extends Candy {
 		return 60;
 	}
 
+	@Override
+	public boolean hasEffect() {
+		return true;
+	}
 }

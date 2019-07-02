@@ -15,6 +15,10 @@ public class LightableCell extends Cell{
         lit = true;
     }
 
+    public void turnOff(){
+        lit = false;
+    }
+
     public boolean isLighted(){
         return lit;
     }

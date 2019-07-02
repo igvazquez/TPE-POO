@@ -2,15 +2,16 @@ package game.backend.level.gameState;
 
 public class Level2State extends GameState {
     public int lightedCells;
-    private long maxMoves;
+    private int maxMoves;
+    protected int totalCells;
 
-    public Level2State(int lightedCells, long maxMoves) {
-        this.lightedCells = lightedCells;
+    public Level2State(int totalCells, int maxMoves) {
+        this.totalCells = totalCells;
         this.maxMoves = maxMoves;
     }
 
     public void turnOnCell(){
-        lightedCells--;
+        lightedCells++;
     }
 
     @Override
@@ -20,10 +21,24 @@ public class Level2State extends GameState {
 
     @Override
     public boolean playerWon() {
-        return lightedCells<=0;
+        return lightedCells >= totalCells;
     }
 
-    public long getMaxMoves() {
+    public int getLightedCells() {
+        return lightedCells;
+    }
+    public int getOffCells(){
+        return totalCells-lightedCells;
+    }
+
+    public void turnOffCell() {
+        lightedCells--;
+    }
+    public int getMovesLeft(){
+        return getMaxMoves() - getMoves();
+    }
+
+    public int getMaxMoves() {
         return maxMoves;
     }
 }

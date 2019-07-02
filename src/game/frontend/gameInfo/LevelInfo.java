@@ -45,4 +45,8 @@ public abstract class LevelInfo {
     public String getElementText(Element element){
             return null;
     }
+
+    public boolean areCellsLightable(){
+        return false;
+    }
 }
