@@ -4,7 +4,7 @@ import game.backend.level.gameState.GameState;
 import game.backend.level.gameState.Level5State;
 import game.backend.level.gameState.MovementDependantState;
 
-public class Level5Info extends LevelInfo {
+public class Level5Info extends MovementDependantLevelInfo {
 
     public Level5Info(GameState gameState) {
         super(gameState);
@@ -12,16 +12,12 @@ public class Level5Info extends LevelInfo {
 
     @Override
     protected String auxLevelStateInfo() {
-        return movementsLeft() + " - " + fruitsLeft() + " - " + super.auxLevelStateInfo();
+        return  fruitsLeft()  + " - " + super.auxLevelStateInfo();
     }
 
     @Override
     public String levelName() {
         return "Level 5";
-    }
-
-    public String movementsLeft(){
-        return " Movements left: " + ((MovementDependantState)gameState).getMovesLeft();
     }
 
     public String fruitsLeft(){

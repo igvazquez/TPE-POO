@@ -4,7 +4,7 @@ import game.backend.level.gameState.GameState;
 import game.backend.level.gameState.Level1State;
 import game.backend.level.gameState.MovementDependantState;
 
-public class Level1Info extends LevelInfo {
+public class Level1Info extends MovementDependantLevelInfo {
 
     public Level1Info(GameState gameState) {
         super(gameState);
@@ -17,10 +17,6 @@ public class Level1Info extends LevelInfo {
 
     @Override
     protected String auxLevelStateInfo() {
-        return  "Moves Left: " + movementsLeft() + " " + super.auxLevelStateInfo();
-    }
-
-    public String movementsLeft(){
-        return " Movs. left: " + ((MovementDependantState)gameState).getMovesLeft();
+        return super.auxLevelStateInfo();
     }
 }

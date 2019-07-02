@@ -5,7 +5,7 @@ import game.backend.level.gameState.Level2State;
 import game.backend.level.gameState.MovementDependantState;
 
 
-public class Level2Info extends LevelInfo{
+public class Level2Info extends MovementDependantLevelInfo{
 
     public Level2Info(GameState gameState) {
         super(gameState);
@@ -13,7 +13,7 @@ public class Level2Info extends LevelInfo{
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Cells remaining: " + ((Level2State)gameState).getOffCells() + " " + movementsLeft() + " " + super.auxLevelStateInfo();
+        return "Cells remaining: " + ((Level2State)gameState).getOffCells() + " - " + super.auxLevelStateInfo();
     }
 
     @Override
@@ -26,7 +26,4 @@ public class Level2Info extends LevelInfo{
         return true;
     }
 
-    public String movementsLeft(){
-        return " Movs. left: " + ((MovementDependantState)gameState).getMovesLeft();
-    }
 }
