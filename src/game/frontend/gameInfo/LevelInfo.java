@@ -26,9 +26,9 @@ public abstract class LevelInfo {
     }
 
     private String wonMessage(){
-        return "Player won incredible you are the best, man";
+        return "You won! Congratulations";
     }
-    private String lossMessage(){ return "Player loss gatovich";}
+    private String lossMessage(){ return "You lost! Oh no";}
     public boolean hasToUpdateInfo(){
         return false;
     }
@@ -37,10 +37,6 @@ public abstract class LevelInfo {
     }
 
     public abstract String levelName();
-
-   /*public boolean hasCandyText(){
-        return false;
-    }*/
 
     public String getElementText(Element element){
             return null;
