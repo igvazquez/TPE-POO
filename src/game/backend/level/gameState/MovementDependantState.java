@@ -1,6 +1,7 @@
 package game.backend.level.gameState;
 
 public abstract class MovementDependantState extends GameState {
+
     protected int maxMoves;
 
     @Override

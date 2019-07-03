@@ -4,7 +4,8 @@ import game.backend.Grid;
 
 public class InvalidMove extends Move{
 
-    public InvalidMove(Grid grid) {
+    //Se crea para modelar los movimientos invalidos como el de una bomba con un cherry
+   InvalidMove(Grid grid) {
         super(grid);
     }
 

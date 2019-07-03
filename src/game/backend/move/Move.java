@@ -12,7 +12,7 @@ public abstract class Move {
 		this.grid = grid;
 	}
 	
-	public void setCoords(int i1, int j1, int i2, int j2){
+	 void setCoords(int i1, int j1, int i2, int j2){
 		this.i1 = i1;
 		this.j1 = j1;
 		this.i2 = i2;

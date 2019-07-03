@@ -7,6 +7,7 @@ public abstract class MovementDependantLevelInfo extends LevelInfo {
     public MovementDependantLevelInfo(GameState gameState) {
         super(gameState);
     }
+
     public String movementsLeft(){
         return " Movs. left: " + ((MovementDependantState)gameState).getMovesLeft();
     }

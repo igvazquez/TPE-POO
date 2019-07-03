@@ -10,7 +10,6 @@ public class BombMove extends Move {
 		super(grid);
 	}
 
-	//se fija cual es el caramelo, y destruye todos los caramelos de ese tipo
 	@Override
 	public void removeElements() {
 		Candy candy = (Candy) (get(i1, j1) instanceof Bomb ? get(i2, j2) : get(i1, j1));

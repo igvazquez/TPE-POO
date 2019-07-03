@@ -11,8 +11,7 @@ public class BombWrappedMove extends Move {
 	}
 	
 	@Override
-	public void removeElements() {
-		//Rompe todos los de ese color
+	public void removeElements(){
 		Candy candy = (Candy) (get(i1, j1) instanceof Bomb ? get(i2, j2) : get(i1, j1));
 		clearContent(i1, j1);
 		clearContent(i2, j2);

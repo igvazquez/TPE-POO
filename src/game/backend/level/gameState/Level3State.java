@@ -2,7 +2,6 @@ package game.backend.level.gameState;
 
 public class Level3State extends ScoreDependantState {
 
-
     private Integer closestExpirationMove;
 
     public Level3State(int requiredScore) {

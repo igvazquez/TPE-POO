@@ -12,7 +12,7 @@ public class MoveMakerWithFruits extends MoveMaker{
     @Override
     protected void initMap() {
         super.initMap();
-
+        // se agrego el constructor fruit para poder mantener el funcionamiento como en el modelo que se nos entrego
         String specialKey = new Fruit().getKey();
 
         map.put(specialKey + new Candy().getKey(), new CandyMove(grid));

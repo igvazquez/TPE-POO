@@ -1,8 +1,9 @@
 package game.backend.level.gameState;
 
 public class Level2State extends MovementDependantState {
-    public int lightedCells;
-    protected int totalCells;
+
+    private int lightedCells;
+    private int totalCells;
 
     public Level2State(int totalCells, int maxMoves) {
         this.totalCells = totalCells;

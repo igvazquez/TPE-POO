@@ -6,8 +6,9 @@ import game.backend.Grid;
 import game.backend.element.Element;
 
 public abstract class LevelInfo {
+    //Se busco tener un interlocutor entre el back-end y el front-end que se ocupe de tomar la informacion del primero y darsela
+    //procesada al segundo.
     protected GameState gameState;
-
     public LevelInfo(GameState gameState) {
         this.gameState = gameState;
     }
