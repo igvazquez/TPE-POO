@@ -228,11 +228,6 @@ public abstract class Grid {
 			gl.cellExplosion(e);
 		}
 	}
-	//Nuevo
-	public GameState getGameState(){
-		return state;
-	}
-
 
 	//Nuevo: Metodo que se ejecuta cuando se finaliza un nivel para terminar con sus procesos activos(Threads)
 	public void finish(){

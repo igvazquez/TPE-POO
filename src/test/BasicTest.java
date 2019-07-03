@@ -1,41 +1,31 @@
 package test;
 
 import game.backend.CandyGame;
+import game.backend.level.Level1;
 import game.frontend.CandyFrame;
 import game.frontend.GameApp;
 import game.frontend.Levels;
-import game.frontend.MainMenu;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-public class BasicTest extends GameApp {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    //Se guarda el Stage para poder ir y volver entre niveles y el
-    // menu principal. El game es necesario para finalizar el nivel.
-    private Stage primaryStage;
-    private CandyGame game;
+public class BasicTest extends Application{
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        primaryStage.setResizable(false);
-        openLevelSelector();
-    }
 
-    @Override
-    public void startLevel(Levels level){
-        game = new CandyGame(level.getLevel());
-        CandyFrame frame = new CandyFrame(game, level,this);
+        Tests testLevel = Tests.TEST5;//Elemento perteneciente al enum Tests
+        CandyGame game = new CandyGame(testLevel.getLevel());
+        CandyFrame frame = new CandyFrame(game, testLevel.getParentLevel(),this);
         Scene scene = new Scene(frame);
         primaryStage.setResizable(false);
-        primaryStage.setTitle(level.name() + ": " + level.getDescription());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    @Override
-    public void openLevelSelector(){
-        //
-    }
+
 }

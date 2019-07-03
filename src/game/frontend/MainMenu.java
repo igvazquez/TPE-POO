@@ -12,7 +12,7 @@ import javafx.scene.text.FontWeight;
 
 public class MainMenu extends VBox {
 
-    public MainMenu(Application app) {
+    public MainMenu(GameApp app) {
 
         setPadding(new Insets(10, 50, 50, 50));
         setSpacing(10);
@@ -31,7 +31,7 @@ public class MainMenu extends VBox {
             button.setOnMouseExited(e->button.setOpacity(0.8));
             button.setPrefWidth(250);
             button.setFont(Font.font("Roboto", FontWeight.BOLD, 24));
-            button.setOnMouseClicked((event -> ((GameApp)app).startLevel(level)));
+            button.setOnMouseClicked((event -> app.startLevel(level)));
             getChildren().add(button);
         }
     }

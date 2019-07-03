@@ -15,7 +15,7 @@ public class Level2Info extends LevelInfo{
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Cells remaining: " + ((Level2State)gameState).getOffCells() + " " +movementsLeft() + " " + super.auxLevelStateInfo();
+        return "Cells left: " + ((Level2State)gameState).getOffCells() + " " +movementsLeft() + " " + super.auxLevelStateInfo();
     }
 
     public String movementsLeft(){

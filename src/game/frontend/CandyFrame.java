@@ -8,7 +8,9 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -28,9 +30,11 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private CandyGame game;
 	private LevelInfo levelInfo;
+	private Application app;
 
 	public CandyFrame(CandyGame game, Levels levelEnum, Application app) {
 		this.game = game;
+		this.app = app;
 		getChildren().add(new AppMenu(app));
 		images = new ImageManager();
 		boardPanel = new BoardPanel(CandyGame.getSize(), CandyGame.getSize(), CELL_SIZE);
@@ -38,8 +42,8 @@ public class CandyFrame extends VBox {
 		gameStateInfoPanel = new GameStateInfoPanel();
 		getChildren().add(gameStateInfoPanel);
 		game.initGame();
-		this.levelInfo = levelEnum.createGameInfo();
-		GameListener listener = new ScreenUpdater(images,boardPanel,game, levelInfo);
+		this.levelInfo = levelEnum.createGameInfo(game.getState());
+		GameListener listener = new ScreenUpdater( images, boardPanel, this.game, levelInfo);
 		game.addGameListener(listener);
 
 		listener.gridUpdated();
@@ -62,25 +66,32 @@ public class CandyFrame extends VBox {
 			} else {
 				Point2D newPoint = translateCoords(event.getX(), event.getY());
 				if (newPoint != null) {
+					if(game.getState().gameOver())
+						showAlert();
 					System.out.println("Get second = " +  newPoint);
 					game.tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
 					lastPoint = null;
+
 				}
 			}
 		});
 
 	}
 
-	//No es necesario
-	/*private CandyGame game() {
-		return game;
-	}*/
-
 	private Point2D translateCoords(double x, double y) {
 		double i = x / CELL_SIZE;
 		double j = y / CELL_SIZE;
-		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
+		return (i >= 0 && i < CandyGame.getSize() && j >= 0 && j < CandyGame.getSize()) ? new Point2D(j, i) : null;
+	}
+
+	private void showAlert() {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Level Finished");
+		alert.setHeaderText("GAME OVER");
+		alert.setContentText("Moves can no longer be made. Accept to choose a new level");
+		alert.setOnHidden(event -> ((GameApp)app).openLevelSelector());
+		alert.showAndWait();
 	}
 
 }

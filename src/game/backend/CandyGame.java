@@ -55,4 +55,8 @@ public class CandyGame implements GameListener {
 	public void finish(){
 		grid.finish();
 	}
+
+	public GameState getState() {
+		return state;
+	}
 }
