@@ -41,14 +41,6 @@ public class CandyGame implements GameListener {
 		return state.getScore();
 	}
 
-	/*public boolean isFinished() {
-		return state.gameOver();
-	}*/
-
-	/*public boolean playerWon() {
-		return state.playerWon();
-	}*/
-
 	@Override
 	public void cellExplosion(Element e) {
 		state.addScore(e.getScore());
@@ -59,11 +51,8 @@ public class CandyGame implements GameListener {
 		//
 	}
 
+	//Nuevo: Se encarga de finalizar el nivel.
 	public void finish(){
 		grid.finish();
 	}
-
-	public Grid getGrid(){
-		return grid;
-	} //Creo que deberiamos matar este metodo
 }

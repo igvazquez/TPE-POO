@@ -78,10 +78,10 @@ public abstract class Grid {
 	protected void setMoveMaker() {
 		moveMaker = new MoveMaker(this);
 	}
+
 	//Se cambio el lugar del metodo desde Level1 a Grid porque entendemos que es un metodo que todos los
 	//Levels van a usar, no de alguno en especifico, por lo que corresponde en Grid. Para que cada level
 	//decida sus generadores y celdas se crearon los metodos de arriba.
-
 	protected void fillCells() {
 
 		wallCell = cellCreator();
@@ -184,7 +184,8 @@ public abstract class Grid {
 	}
 
 	/*Igual que en figure detector, y hay casos donde creemos que falla. Lo cambiamos por
-	el mismo metodo de figureDetector para que se remueva la figura siempre con el mismo criterio.
+	el mismo metodo de figureDetector para que se remueva la figura siempre con el mismo criterio
+	y evitamos la existencia de dos metodos practicamente iguales.
 
 	private void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
