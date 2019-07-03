@@ -2,11 +2,12 @@ package game.backend.cell;
 
 import game.backend.Grid;
 import game.backend.element.Element;
+import game.backend.level.SpecialItemLevel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
+public class SpecialItemAndCandyGeneratorCell extends CandyGeneratorCell {
 
     public static final int UNLIMITED_AMOUNT_KEY = -1;
     private int frequency;
@@ -16,7 +17,7 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     private List<Integer> initialValues;
 
 
-    public SpecialCandyGeneratorCell(Grid grid, int frequency, int amount, int initialAmount) {
+    public SpecialItemAndCandyGeneratorCell(Grid grid, int frequency, int amount, int initialAmount) {
 
         super(grid);
 
@@ -32,8 +33,8 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     @Override
     public Element getContent() {
         if(validation())
-            return grid.getSpecialLevelElement();
-        return super.getContent();
+            return ((SpecialItemLevel)grid).getSpecialLevelElement(); //El casteo es correcto pues esta celda solo se usa en
+        return super.getContent();                                    //niveles que tienen un special Item (implementan SpecialItemLevel).
     }
 
     private boolean validation(){
@@ -44,17 +45,9 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
         return false;
     }
 
-    private boolean belongsToMatrixBorders(int value) {
-       boolean ans = value < Grid.SIZE;
-       ans |= value > Grid.SIZE * ( Grid.SIZE - 1);
-       ans |= value % Grid.SIZE == 0;
-       ans |= value % Grid.SIZE == 8;
-
-       return ans;
-    }
-
     private boolean inGameValidation() {
-        return (grid.getCurrentMoves() != lastMove) &&  (grid.getCurrentMoves() % frequency == 0) && ( amount == UNLIMITED_AMOUNT_KEY || (grid.getCurrentMoves() / frequency <= amount));
+        return (grid.getCurrentMoves() != lastMove) &&  (grid.getCurrentMoves() % frequency == 0) &&
+                ( amount == UNLIMITED_AMOUNT_KEY || (grid.getCurrentMoves() / frequency <= amount));
     }
 
     private boolean initializingValidation(){
@@ -68,8 +61,8 @@ public class SpecialCandyGeneratorCell extends CandyGeneratorCell {
 
         for(int i = 0; i < initialAmount ; i++) {
             do {
-                aux = (int) (Math.random() * Grid.SIZE * Grid.SIZE); //Numero entre 0 y 81
-            }while (belongsToMatrixBorders(aux));//Que no se encuentre en los bordes
+                aux = (int) (Math.random() * (Grid.SIZE * Grid.SIZE - 1)); //Numero entre 0 y 80
+            }while (initialValues.contains(aux));//Sin repetidos
             initialValues.add(aux);
         }
     }

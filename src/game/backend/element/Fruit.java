@@ -7,7 +7,8 @@ public class Fruit extends Element{
     public Fruit(FruitType type) {
         this.type = type;
     }
-    public Fruit(){}
+
+    public Fruit(){} //Para ser coherentes con la implementacion de MoveMaker y Candy debemos agregar un constructor vacio.
 
     @Override
     public boolean isMovable() {

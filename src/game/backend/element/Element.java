@@ -24,6 +24,8 @@ public abstract class Element {
 		return 0;
 	}
 
+
+	//Nuevos metodos creados para diferenciar las caracteristicas de los nuevos elementos.
 	public boolean isCombinable(){
 	    return true;
     }

@@ -34,7 +34,6 @@ public class Level2 extends Grid {
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         if(super.tryMove(i1, j1, i2, j2)){
             lightCorrespondingCells(i1, j1, i2, j2);
-            state().addMove();
             return true;
         }
         return false;

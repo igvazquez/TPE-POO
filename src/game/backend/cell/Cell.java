@@ -8,8 +8,8 @@ import game.backend.move.Direction;
 public class Cell {
 	
 	protected Grid grid;
-	protected Cell[] around = new Cell[Direction.values().length];
-	protected Element content;
+	private Cell[] around = new Cell[Direction.values().length];
+	private Element content;
 	
 	public Cell(Grid grid) {
 		this.grid = grid;
@@ -23,7 +23,6 @@ public class Cell {
 		this.around[Direction.RIGHT.ordinal()] = right;
 	}
 
-	//Termine de caer
 	public boolean hasFloor() {
 		return !around[Direction.DOWN.ordinal()].isEmpty();
 	}
@@ -36,13 +35,13 @@ public class Cell {
 		return !content.isSolid();
 	}
 
+	//Nuevo
 	public boolean isCombinable(){ return content.isCombinable(); }
 
 	public Element getContent() {
 		return content;
 	}
-	
-	//Deja Nothing como contenido y realiza la explosion si es que tiene
+
 	public boolean clearContent() {
 		if (content.isMovable()) {
 			Direction[] explosionCascade = content.explode();
@@ -57,16 +56,14 @@ public class Cell {
 		return false;
 	}
 
-	//Realiza la explosion en las direcciones indicadas
 	private void expandExplosion(Direction[] explosion) {
 		for(Direction d: explosion) {
 			this.around[d.ordinal()].explode(d);
 		}
 	}
 
-	//Recibe una direccion y conduce la explosion en esa direccion
 	private void explode(Direction d) {
-		clearContent();//Arreglar la explosion
+		clearContent();
 		if (this.around[d.ordinal()] != null)
 			this.around[d.ordinal()].explode(d);
 	}
@@ -85,7 +82,6 @@ public class Cell {
 		if (this.isEmpty() && !up.isEmpty() && up.isMovable()) {
 			this.content = up.getAndClearContent();
 			grid.wasUpdated();
-			//Llegue y  prueba romperse
 			if (this.hasFloor()) {
 				grid.tryRemove(this);
 				return true;
@@ -101,6 +97,7 @@ public class Cell {
 		this.content = content;
 	}
 
+	//Nueva: Se fija si la celda esta abajo de toda la matriz.
 	public boolean isBottom(){
 		Cell down = around[Direction.DOWN.ordinal()];
 		return down != null && !down.isMovable() && hasFloor() && !down.isCombinable();
