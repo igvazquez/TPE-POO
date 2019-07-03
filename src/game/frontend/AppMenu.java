@@ -9,7 +9,9 @@ import java.util.Optional;
 public class AppMenu extends MenuBar {
 
     public AppMenu(Application app) {
+
         Menu file = new Menu("Archivo");
+
         MenuItem exitMenuItem = new MenuItem("Salir");
         exitMenuItem.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -23,10 +25,12 @@ public class AppMenu extends MenuBar {
                 }
             }
         });
+        file.getItems().add(exitMenuItem);
+
         MenuItem levelSelector = new MenuItem("Levels");
         levelSelector.setOnAction(event -> ((GameApp)app).openLevelSelector());
-        file.getItems().add(exitMenuItem);
         file.getItems().add(levelSelector);
+
         Menu help = new Menu("Ayuda");
         MenuItem aboutMenuItem = new MenuItem("Acerca De");
         aboutMenuItem.setOnAction(event -> {
@@ -34,10 +38,12 @@ public class AppMenu extends MenuBar {
             alert.setTitle("Acerca De");
             alert.setHeaderText("Candy TPE");
             alert.setContentText("Cátedra POO 2018.\n" +
-                    "Implementación Original: Laura Zabaleta (POO 2013).");
+                    "Implementación Original: Laura Zabaleta (POO 2013)." +
+                    "Expandido por los alumnos: Faustino, Ignacio, Ignacio, Tobias :)");
             alert.showAndWait();
         });
         help.getItems().add(aboutMenuItem);
+
         getMenus().addAll(file, help);
     }
 

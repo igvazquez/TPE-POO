@@ -1,5 +1,6 @@
 package game.frontend.gameInfo;
 
+import game.backend.cell.Cell;
 import game.backend.level.gameState.GameState;
 import game.backend.Grid;
 import game.backend.element.Element;
@@ -40,7 +41,7 @@ public abstract class LevelInfo {
             return null;
     }
 
-    public boolean areCellsLightable(){
-        return false;
+    public String getCellEffect(Cell cell) {
+        return "NOEFFECT";
     }
 }

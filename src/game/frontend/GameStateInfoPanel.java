@@ -3,7 +3,8 @@ package game.frontend;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-
+	//Se decidio utilizar este nombre para la clase ay que nos
+	// parecio que reflejaba mejor el proposito de la misma
 public class GameStateInfoPanel extends BorderPane {
 
 	private Label infoLabel;

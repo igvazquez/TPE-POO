@@ -1,8 +1,7 @@
 package game.frontend;
 
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Light;
-import javafx.scene.effect.Lighting;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -31,11 +30,12 @@ public class BoardPanel extends TilePane {
 			}
 		}
 	}
-
+	//Setea imagenes
 	public void setImage(int row, int column, Image image) {
 		cells[row][column].getChildren().add(new ImageView(image));
 	}
 
+	//Superpone un texto
 	public void setImage(int row, int column, Image image, String overlappingText) {
 		setImage(row, column, image);
 		if(overlappingText != null) {
@@ -53,13 +53,12 @@ public class BoardPanel extends TilePane {
 		}
 	}
 
-    public void setLightedImage(int row, int column, Image image, String overlappingText) {
+	//Aplica un efecto
+    public void setImage(int row, int column, Image image, String overlappingText, String cellEffect) {
 		setImage(row, column, image, overlappingText);
 
-		Light.Distant spotLight = new Light.Distant();
-		spotLight.setColor(Color.YELLOW);
-		spotLight.setElevation(100);
-		Lighting lighting = new Lighting(spotLight);
-		cells[row][column].setEffect(lighting);
+		Effect effect;
+		if((effect = CellEffects.valueOf(cellEffect).getEffect()) != null)
+			cells[row][column].setEffect(effect);
     }
 }

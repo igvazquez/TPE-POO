@@ -13,6 +13,8 @@ public class GameApp extends Application {
 		launch(args);
 	}
 
+	//Se guarda el Stage para poder ir y volver entre niveles y el
+	// menu principal. El game es necesario para finalizar el nivel.
 	private Stage primaryStage;
 	private CandyGame game;
 
@@ -24,19 +26,17 @@ public class GameApp extends Application {
 	}
 
 	public void startLevel(Levels level){
-		primaryStage.close();
 		game = new CandyGame(level.getLevel());
 		CandyFrame frame = new CandyFrame(game, level,this);
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);
-		primaryStage.setTitle(level.name());
+		primaryStage.setTitle(level.name() + ": " + level.getDescription());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 
 	public void openLevelSelector(){
-		primaryStage.close();
-		if(game!=null)
+		if( game != null )
 			game.finish();
 		Scene scene = new Scene(new MainMenu(this));
 		primaryStage.setTitle("Level Selector");

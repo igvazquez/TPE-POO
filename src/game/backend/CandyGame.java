@@ -18,8 +18,10 @@ public class CandyGame implements GameListener {
 		grid.initialize();
 		addGameListener(this);
 	}
-	
-	public int getSize() {
+
+	//Se convirtio este metodo a un metodo de clase ya que no
+	//utilizaba ninguna propiedad pertinente a la instancia
+	public static int getSize() {
 		return Grid.SIZE;
 	}
 	

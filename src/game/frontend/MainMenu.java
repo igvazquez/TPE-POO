@@ -8,6 +8,8 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+//Es el menu principal donde se seleccionan los niveles a jugar
+
 public class MainMenu extends VBox {
 
     public MainMenu(Application app) {
@@ -23,11 +25,11 @@ public class MainMenu extends VBox {
 
         for(Levels level : Levels.values()){
             Button button = new Button();
-            button.setText(level.name());
-            button.setOpacity(0.7);
+            button.setText((level.ordinal() + 1) + ": " + level.getDescription());
+            button.setOpacity(0.8);
             button.setOnMouseEntered(e->button.setOpacity(0.9));
-            button.setOnMouseExited(e->button.setOpacity(0.7));
-            button.setPrefWidth(200);
+            button.setOnMouseExited(e->button.setOpacity(0.8));
+            button.setPrefWidth(250);
             button.setFont(Font.font("Roboto", FontWeight.BOLD, 24));
             button.setOnMouseClicked((event -> ((GameApp)app).startLevel(level)));
             getChildren().add(button);

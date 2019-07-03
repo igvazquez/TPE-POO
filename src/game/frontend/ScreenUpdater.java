@@ -31,8 +31,8 @@ public class ScreenUpdater implements GameListener {
         Timeline timeLine = new Timeline();
         Duration frameGap = Duration.millis(100);
         Duration frameTime = Duration.ZERO;
-        for (int i = game.getSize() - 1; i >= 0; i--) {
-            for (int j = game.getSize() - 1; j >= 0; j--) {
+        for (int i = CandyGame.getSize() - 1; i >= 0; i--) {
+            for (int j = CandyGame.getSize() - 1; j >= 0; j--) {
                 int finalI = i;
                 int finalJ = j;
                 Cell cell = game.get(i, j);
@@ -41,13 +41,7 @@ public class ScreenUpdater implements GameListener {
 
                 timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
 
-                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> {
-
-                if(levelInfo.areCellsLightable() && ((LightableCell)cell).isLighted())
-                    boardPanel.setLightedImage(finalI, finalJ, image, levelInfo.getElementText(element));
-                else
-                    boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element));
-                    }));
+                timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, levelInfo.getElementText(element), levelInfo.getCellEffect(cell))));
                 }
 
             frameTime = frameTime.add(frameGap);

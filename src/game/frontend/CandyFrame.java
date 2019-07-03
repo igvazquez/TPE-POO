@@ -33,13 +33,13 @@ public class CandyFrame extends VBox {
 		this.game = game;
 		getChildren().add(new AppMenu(app));
 		images = new ImageManager();
-		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
+		boardPanel = new BoardPanel(CandyGame.getSize(), CandyGame.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
 		gameStateInfoPanel = new GameStateInfoPanel();
 		getChildren().add(gameStateInfoPanel);
 		game.initGame();
 		this.levelInfo = levelEnum.createGameInfo();
-		GameListener listener = new ScreenUpdater(images,boardPanel,game(), levelInfo);
+		GameListener listener = new ScreenUpdater(images,boardPanel,game, levelInfo);
 		game.addGameListener(listener);
 
 		listener.gridUpdated();
@@ -63,7 +63,7 @@ public class CandyFrame extends VBox {
 				Point2D newPoint = translateCoords(event.getX(), event.getY());
 				if (newPoint != null) {
 					System.out.println("Get second = " +  newPoint);
-					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
+					game.tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
 					lastPoint = null;
 				}
@@ -72,19 +72,15 @@ public class CandyFrame extends VBox {
 
 	}
 
-
-	private CandyGame game() {
+	//No es necesario
+	/*private CandyGame game() {
 		return game;
-	}
+	}*/
 
 	private Point2D translateCoords(double x, double y) {
 		double i = x / CELL_SIZE;
 		double j = y / CELL_SIZE;
 		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
-	}
-
-	public void updateInfo(){
-		gameStateInfoPanel.updateInfo(levelInfo.levelStateInfo());
 	}
 
 }
