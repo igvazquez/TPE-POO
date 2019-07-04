@@ -9,8 +9,8 @@ import game.backend.level.gameState.Level2State;
 
 public class Level2 extends Grid {
 
-    public static final int MAX_MOVES = 70;
-    public static final int INITIALS_OFF_CELLS = SIZE*SIZE;
+    private static final int MAX_MOVES = 70;
+    private static final int INITIALS_OFF_CELLS = SIZE*SIZE;
 
     @Override
     protected GameState newState() {
@@ -31,7 +31,7 @@ public class Level2 extends Grid {
         return false;
     }
 
-    public void lightCell(LightableCell cell){
+    private void lightCell(LightableCell cell){
         if(!cell.isLighted()){
             cell.light();
             ((Level2State)state()).turnOnCell();

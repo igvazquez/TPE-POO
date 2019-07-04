@@ -2,7 +2,6 @@ package game.frontend.gameInfo;
 
 import game.backend.cell.Cell;
 import game.backend.level.gameState.GameState;
-import game.backend.Grid;
 import game.backend.element.Element;
 
 public abstract class LevelInfo {
@@ -31,10 +30,13 @@ public abstract class LevelInfo {
     private String wonMessage(){
         return "You won! Congratulations";
     }
+
     private String lossMessage(){ return "You lost! Oh no";}
+
     public boolean hasToUpdateInfo(){
         return false;
     }
+
     public int getInfoRefreshRate(){
         throw new IllegalStateException();
     }

@@ -13,9 +13,9 @@ import game.backend.move.MoveMakerWithFruits;
 
 public class Level5 extends Grid implements SpecialItemLevel, ConditionalCellRemovalLevel{
 
-    public static final int REQUIRED_FRUITS = 10;
-    public static final int SPECIAL_ITEM_FREQUENCY = 2;
-    public static final int MAX_MOVES = 50;
+    private static final int REQUIRED_FRUITS = 10;
+    private static final int SPECIAL_ITEM_FREQUENCY = 2;
+    private static final int MAX_MOVES = 50;
     private static final int SPECIAL_ITEM_INITIAL_AMOUNT = 3;
 
 

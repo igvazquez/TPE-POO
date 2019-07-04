@@ -22,6 +22,7 @@ public class BombWrappedMove extends Move {
 				}
 			}
 		}
+
 		//rompe al rededor de cada una
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
@@ -30,6 +31,7 @@ public class BombWrappedMove extends Move {
 				}
 			}
 		}
+
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
 				if (i2 + i >= 0 && i2 + i < Grid.SIZE && j2 + j >= 0 && j2 + j < Grid.SIZE) {

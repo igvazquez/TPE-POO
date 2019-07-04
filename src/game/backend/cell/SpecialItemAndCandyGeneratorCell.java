@@ -3,7 +3,6 @@ package game.backend.cell;
 import game.backend.Grid;
 import game.backend.element.Element;
 import game.backend.level.SpecialItemLevel;
-
 import java.util.ArrayList;
 import java.util.List;
 

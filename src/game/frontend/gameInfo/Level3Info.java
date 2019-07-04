@@ -1,10 +1,8 @@
 package game.frontend.gameInfo;
 
 import game.backend.level.gameState.GameState;
-import game.backend.Grid;
 import game.backend.element.Element;
 import game.backend.element.ExpirableCandy;
-import game.backend.level.Level3;
 import game.backend.level.gameState.Level3State;
 
 public class Level3Info extends LevelInfo {
@@ -24,12 +22,12 @@ public class Level3Info extends LevelInfo {
         if(movsLeft != null)
             message += movsLeft;
         else
-            message += "Infinit";
+            message += "Unlimited";
         return message;
     }
 
     @Override
-    public String getElementText(Element element) { //CAMBIAR METODO, NO RECIBE GRID.
+    public String getElementText(Element element) {
         String candyText = null;
         if (element.isExpirable())
             candyText = String.valueOf(((ExpirableCandy)element).getExpirationMove() - gameState.getMoves());

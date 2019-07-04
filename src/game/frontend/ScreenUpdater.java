@@ -3,7 +3,6 @@ package game.frontend;
 import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
-import game.backend.cell.LightableCell;
 import game.backend.element.Element;
 import game.frontend.gameInfo.LevelInfo;
 import javafx.animation.KeyFrame;

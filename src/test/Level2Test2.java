@@ -1,6 +1,5 @@
 package test;
 
-import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.HorizontalStripedCandy;
 import game.backend.element.VerticalStripedCandy;
