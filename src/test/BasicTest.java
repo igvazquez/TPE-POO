@@ -18,7 +18,7 @@ public class BasicTest extends Application{
     @Override
     public void start(Stage primaryStage) {
 
-        Tests testLevel = Tests.TEST5;//Elemento perteneciente al enum Tests
+        Tests testLevel = Tests.TEST5;//Aqui se elige el test a ejecutar del enum
         CandyGame game = new CandyGame(testLevel.getLevel());
         CandyFrame frame = new CandyFrame(game, testLevel.getParentLevel(),this);
         Scene scene = new Scene(frame);
