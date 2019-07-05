@@ -1,8 +1,6 @@
 package test;
 
-import game.backend.cell.Cell;
 import game.backend.element.*;
-import game.backend.level.Level1;
 import game.backend.level.Level2;
 
 public class Level2Test extends Level2 {

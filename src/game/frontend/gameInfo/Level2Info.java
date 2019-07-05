@@ -4,10 +4,9 @@ import game.backend.cell.Cell;
 import game.backend.cell.LightableCell;
 import game.backend.level.gameState.GameState;
 import game.backend.level.gameState.Level2State;
-import game.backend.level.gameState.MovementDependantState;
 
 
-public class Level2Info extends LevelInfo{
+public class Level2Info extends MovementDependantLevelInfo{
 
     public Level2Info(GameState gameState) {
         super(gameState);
@@ -15,11 +14,7 @@ public class Level2Info extends LevelInfo{
 
     @Override
     protected String auxLevelStateInfo() {
-        return "Cells left: " + ((Level2State)gameState).getOffCells() + " " +movementsLeft() + " " + super.auxLevelStateInfo();
-    }
-
-    public String movementsLeft(){
-        return " Movs. left: " + ((MovementDependantState)gameState).getMovesLeft();
+        return "Cells left: " + ((Level2State)gameState).getOffCells() + super.auxLevelStateInfo();
     }
 
     @Override

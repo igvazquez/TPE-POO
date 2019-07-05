@@ -8,21 +8,15 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.Event;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-import java.text.DateFormat;
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class CandyFrame extends VBox {
 
 	private static final int CELL_SIZE = 65;
-	private static final int TIMER_INIT_DELAY = 200;
 
 	private BoardPanel boardPanel;
 	private GameStateInfoPanel gameStateInfoPanel;
@@ -43,7 +37,7 @@ public class CandyFrame extends VBox {
 		getChildren().add(gameStateInfoPanel);
 		game.initGame();
 		this.levelInfo = levelEnum.createGameInfo(game.getState());
-		GameListener listener = new ScreenUpdater( images, boardPanel, this.game, levelInfo);
+		GameListener listener = new ScreenUpdater( images, boardPanel, game, levelInfo);
 		game.addGameListener(listener);
 
 		listener.gridUpdated();

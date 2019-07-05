@@ -24,9 +24,8 @@ public abstract class Grid {
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
 	protected MoveMaker moveMaker;
-	protected FigureDetector figureDetector;
+	protected FigureDetector figureDetector; //Protected ya que existe el metodo setFigureDetector
 	private Cell wallCell;
-
 	protected Cell candyGenCell;
 
 	protected abstract GameState newState();
@@ -82,11 +81,10 @@ public abstract class Grid {
 	//Se cambio el lugar del metodo desde Level1 a Grid porque entendemos que es un metodo que todos los
 	//Levels van a usar, no de alguno en especifico, por lo que corresponde en Grid. Para que cada level
 	//decida sus generadores y celdas se crearon los metodos de arriba.
-	protected void fillCells() {
+	private void fillCells() {
 
 		wallCell = cellCreator();
 		wallCell.setContent(new Wall());
-
 
 		//corners
 		//Agrega walls a  los costados y generadores arriba
