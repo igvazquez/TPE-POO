@@ -1,11 +1,11 @@
 
 # T.P. final POO
 Fecha de entrega: 10/07/2019
-Integrantes:
-- Brandy, Tobías
-- Pannunzio, Faustino
-- Sagues, Ignacio
-- Vazquez, Ignacio
+## Integrantes:
+- [Brandy Tobias](https://github.com/tobiasbrandy)
+- [Pannunzio Faustino](https://github.com/Fpannunzio)
+- [Sagues Ignacio](https://github.com/isagues)
+- [Vazquez Ignacio](https://github.com/igvazquez)
 
 ## Modificaciones al programa provisto
 En la clase cell se agregaron los métodos isCombinable, que indica si el contenido de la celda es combinable, y el método isBottom, que se fija si la celda se encuentra al fondo del tablero.
